@@ -36,6 +36,10 @@ function createServer(
         servernet.emit("ClientError", err, socket);
     });
     serverhttp.addListener("error", () => {});
+    serverspdy.addListener("ClientError", (err: Error, socket: net.Socket) => {
+        socket.destroy();
+        servernet.emit("ClientError", err, socket);
+    });
     serverspdy.addListener(
         "tlsClientError",
         (err: Error, socket: tls.TLSSocket) => {
