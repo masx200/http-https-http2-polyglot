@@ -1,6 +1,6 @@
 /**
- * @param {{ url: any; status: any; headers: any; text: () => any; }} r
+ * @param {Response} r
  */
 export function formatresponse(r) {
-    return Promise.all([r.url, r.status, [...r.headers], r.text()]);
+    return Promise.all([r.url, r.ok, r.status, [...r.headers], r.text()]);
 }

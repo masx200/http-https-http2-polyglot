@@ -24,11 +24,7 @@ function createServer(
     requestListener = requestListener || requestNotFound;
     upgradeListener = upgradeListener || upgradeNotFound;
 
-
-
-config.allowHalfOpen=false
-
-
+    config.allowHalfOpen = false;
 
     const servernet = net.createServer(config);
     const serverhttp = http.createServer(config);
@@ -37,12 +33,14 @@ config.allowHalfOpen=false
     servernet.addListener("error", () => {});
     serverhttp.addListener("ClientError", (err: Error, socket: net.Socket) => {
         socket.destroy();
+        servernet.emit("ClientError", err, socket);
     });
     serverhttp.addListener("error", () => {});
     serverspdy.addListener(
         "tlsClientError",
         (err: Error, socket: tls.TLSSocket) => {
             socket.destroy();
+            servernet.emit("tlsClientError", err, socket);
         }
     );
     serverspdy.addListener("error", () => {});
@@ -101,6 +99,11 @@ tls.TLSSocket
                 handlehttp(socket);
             } else {
                 socket.destroy();
+                servernet.emit(
+                    "ClientError",
+                    new Error("protocol error not http or tls"),
+                    socket
+                );
             }
         }
         /* 测试发现不能使用on data事件,会收不到响应,多次数据会漏掉 */
