@@ -93,6 +93,17 @@ Event "ClientError", If a client connection emits an 'error' event, it will be f
 
 Event "tlsClientError", The 'tlsClientError' event is emitted when an error occurs before a secure connection is established.
 
+
+Event: 'listening',Emitted when the server has been bound after calling server.listen().
+
+
+Event: 'close', Emitted when the server closes
+
+
+
+Event: 'error',Emitted when an error occurs
+
+
 # How it Works
 
 https://github.com/lvgithub/blog/blob/master/http_and_https_over_same_port/README.MD
