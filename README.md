@@ -103,6 +103,15 @@ Event: 'close', Emitted when the server closes
 
 Event: 'error',Emitted when an error occurs
 
+Only "requestListener" will be called when the "request" event occurs.  
+
+
+Only "upgradeListener" will be called when the "upgrade" event occurs.
+
+
+Do not add "request" or "upgrade" event listener because it is not recommended to add multiple event listeners for "request"or "uograde".
+
+
 
 # How it Works
 
