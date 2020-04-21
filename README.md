@@ -101,7 +101,7 @@ Event: 'close', Emitted when the server closes
 
 
 
-Event: 'error',Emitted when an error occurs
+Event: 'error',Emitted when an error occurs on the server
 
 Only "requestListener" will be called when the "request" event occurs.  
 
