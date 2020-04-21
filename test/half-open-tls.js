@@ -3,7 +3,7 @@ import assert from "assert";
 
 import { createServer } from "../lib/index.js";
 import { cert, key } from "./key-cert.js";
-var srv = createServer(
+var server = createServer(
     {
         key,
         cert,
@@ -13,7 +13,7 @@ var srv = createServer(
     }
 );
 
-srv.listen(0, "127.0.0.1", function () {
+server.listen(0, "127.0.0.1", function () {
     var port = this.address().port;
     console.log("listening ", port);
     var request = https.get({
@@ -32,9 +32,9 @@ srv.listen(0, "127.0.0.1", function () {
 });
 
 // Without this change, this is never called:
-srv.on("tlsClientError", function (e) {
+server.on("tlsClientError", function (e) {
     console.error("tlsClientError", e);
-    srv.close(() => {
+    server.close(() => {
         console.log("server closed");
     });
 });
