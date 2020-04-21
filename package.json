@@ -2,7 +2,7 @@
     "type": "module",
     "types": "./dist/index.d.ts",
     "name": "@masx200/http-https-spdy-http2-polyglot",
-    "version": "1.0.5",
+    "version": "1.0.6",
     "main": "./lib/index.js",
     "scripts": {
         "test": "node --experimental-modules ./test/test.js ",
