@@ -71,7 +71,7 @@ https://github.com/masx200/http-https-spdy-http2-polyglot/blob/master/test/notfo
 
 ## Exports
 
-https://github.com/masx200/http-https-spdy-http2-polyglot/blob/master/lib/index.d.ts
+https://github.com/masx200/http-https-spdy-http2-polyglot/blob/master/dist/index.d.ts
 
 -   **createServer** - Creates and returns a new Server instance.
 
