@@ -24,6 +24,12 @@ function createServer(
     requestListener = requestListener || requestNotFound;
     upgradeListener = upgradeListener || upgradeNotFound;
 
+
+
+config.allowHalfOpen=false
+
+
+
     const servernet = net.createServer(config);
     const serverhttp = http.createServer(config);
     //@ts-ignore
