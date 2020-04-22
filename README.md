@@ -93,25 +93,17 @@ Event "ClientError", If a client connection emits an 'error' event, it will be f
 
 Event "tlsClientError", The 'tlsClientError' event is emitted when an error occurs before a secure connection is established.
 
-
 Event: 'listening',Emitted when the server has been bound after calling `server.listen()`.
-
 
 Event: 'close', Emitted when the server closes
 
-
-
 Event: 'error',Emitted when an error occurs on the server
 
-Only "requestListener" will be called when the "request" event occurs.  
-
+Only "requestListener" will be called when the "request" event occurs.
 
 Only "upgradeListener" will be called when the "upgrade" event occurs.
 
-
 Do not add "request" or "upgrade" event listener because it is not recommended to add multiple event listeners for "request"or "uograde".
-
-
 
 # How it Works
 
