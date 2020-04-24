@@ -3,7 +3,9 @@ import { execFile } from "child_process";
 import path, { dirname } from "path";
 import { fileURLToPath } from "url";
 import util from "util";
-process.on("unhandledRejection",e=>{throw e});
+process.on("unhandledRejection", (e) => {
+    throw e;
+});
 // @ts-ignore
 const execpro = util.promisify(execFile);
 // @ts-ignore
