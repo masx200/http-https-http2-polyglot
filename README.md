@@ -122,7 +122,7 @@ yarn install
 ```
 
 ```powershell
-./generate-ssl-cert.ps1
+./generate-ssl-cert.cmd
 ```
 
 ```powershell
