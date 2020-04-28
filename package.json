@@ -2,7 +2,7 @@
     "type": "module",
     "types": "./dist/index.d.ts",
     "name": "@masx200/http-https-spdy-http2-polyglot",
-    "version": "1.0.7",
+    "version": "1.0.8",
     "main": "./lib/index.js",
     "scripts": {
         "test": "./generate-ssl-cert.cmd && node --experimental-modules ./test/test.js ",
