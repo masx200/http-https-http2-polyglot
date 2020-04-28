@@ -1,6 +1,16 @@
 # Description
 
-Serve http and https and spdy and http2 connections over the same port with node.js
+Serve http and https and spdy and http2 connections over the same port with node.js，
+
+and add typescript support。
+
+
+Thanks to the original author，
+
+https://github.com/mscdex/httpolyglot
+
+https://github.com/httptoolkit/httpolyglot
+
 
 # Requirements
 
