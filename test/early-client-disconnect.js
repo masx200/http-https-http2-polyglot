@@ -34,6 +34,6 @@ server.listen(port, "localhost", function () {
         });
     });
 });
-server.on("ClientError", function (e) {
-    console.error("ClientError", e);
+server.on("clientError", function (e) {
+    console.error("clientError", e);
 });

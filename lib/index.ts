@@ -31,14 +31,14 @@ function createServer(
     //@ts-ignore
     const serverspdy = spdy.createServer(config);
     servernet.addListener("error", () => {});
-    serverhttp.addListener("ClientError", (err: Error, socket: net.Socket) => {
+    serverhttp.addListener("clientError", (err: Error, socket: net.Socket) => {
         socket.destroy();
-        servernet.emit("ClientError", err, socket);
+        servernet.emit("clientError", err, socket);
     });
     serverhttp.addListener("error", () => {});
-    serverspdy.addListener("ClientError", (err: Error, socket: net.Socket) => {
+    serverspdy.addListener("clientError", (err: Error, socket: net.Socket) => {
         socket.destroy();
-        servernet.emit("ClientError", err, socket);
+        servernet.emit("clientError", err, socket);
     });
     serverspdy.addListener(
         "tlsClientError",
@@ -104,7 +104,7 @@ tls.TLSSocket
             } else {
                 socket.destroy();
                 servernet.emit(
-                    "ClientError",
+                    "clientError",
                     new Error("protocol error not http or tls"),
                     socket
                 );

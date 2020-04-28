@@ -98,7 +98,7 @@ The `upgradeListener` is a function which is automatically added to the 'upgrade
 
 If no "requestListener" or "upgradeListener" is provided, the default "404 not found" listener will be used instead.
 
-Event "ClientError", If a client connection emits an 'error' event, it will be forwarded here.
+Event "clientError", If a client connection emits an 'error' event, it will be forwarded here.
 
 Event "tlsClientError", The 'tlsClientError' event is emitted when an error occurs before a secure connection is established.
 
