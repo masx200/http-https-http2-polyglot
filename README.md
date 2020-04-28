@@ -4,13 +4,11 @@ Serve http and https and spdy and http2 connections over the same port with node
 
 and add typescript support。
 
-
 Thanks to the original author，
 
 https://github.com/mscdex/httpolyglot
 
 https://github.com/httptoolkit/httpolyglot
-
 
 # Requirements
 
@@ -49,8 +47,9 @@ https://github.com/masx200/http-https-spdy-http2-polyglot/blob/master/test/webso
 -   Simple Determine the connection protocol
 
 ```javascript
-const httpolyglot = require("@masx200/http-https-spdy-http2-polyglot");
-const fs = require("fs");
+import * as httpolyglot from "@masx200/http-https-spdy-http2-polyglot";
+import fs from "fs";
+
 const port = 9000;
 const server = httpolyglot.createServer(
     {
