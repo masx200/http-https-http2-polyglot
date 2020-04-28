@@ -1,4 +1,7 @@
 {
+    "publishConfig": {
+        "registry": "https://registry.npmjs.org/"
+    },
     "type": "module",
     "types": "./dist/index.d.ts",
     "name": "@masx200/http-https-spdy-http2-polyglot",
