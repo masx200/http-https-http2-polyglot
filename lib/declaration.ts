@@ -47,4 +47,5 @@ export const upgradeNotFound = function (
 ) {
     const res = new http.ServerResponse(req);
     requestNotFound(req, res);
+    socket.destroy();
 };
