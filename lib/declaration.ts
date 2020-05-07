@@ -17,7 +17,7 @@ export interface ServerResponse extends http.ServerResponse {
     socket: Socket;
     push?: (pathname: string, options?: PushOptions) => stream.Writable;
 }
-export type Socket = Partial<tls.TLSSocket> & net.Socket;
+export type Socket = tls.TLSSocket | net.Socket;
 export type RequestListener = (req: ServerRequest, res: ServerResponse) => void;
 export type UpgradeListener = (
     req: ServerRequest,
@@ -36,14 +36,15 @@ export const requestNotFound = function (
 ) {
     res.statusCode = 404;
     res.setHeader("content-type", "text/html");
-    res.write("404");
-    res.end();
+
+    res.end("404 Not Found");
+    res.destroy();
 };
 export const upgradeNotFound = function (
     req: ServerRequest,
     socket: Socket,
     head: Buffer
 ) {
-    socket.write(`HTTP/1.1 404 Not Found\r\nConnection: keep-alive\r\n\r\n`);
-    socket.destroy();
+    const res = new http.ServerResponse(req);
+    requestNotFound(req, res);
 };
