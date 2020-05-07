@@ -30,33 +30,33 @@ function createServer(
     const serverhttp = http.createServer(config);
     //@ts-ignore
     const serverspdy = spdy.createServer(config);
-    servernet.addListener("error", () => {});
-    serverhttp.addListener("clientError", (err: Error, socket: net.Socket) => {
-        socket.destroy();
-        servernet.emit("clientError", err, socket);
-    });
-    serverhttp.addListener("error", () => {});
-    serverspdy.addListener("clientError", (err: Error, socket: net.Socket) => {
-        socket.destroy();
-        servernet.emit("clientError", err, socket);
-    });
-    serverspdy.addListener(
-        "tlsClientError",
-        (err: Error, socket: tls.TLSSocket) => {
-            socket.destroy();
-            servernet.emit("tlsClientError", err, socket);
-        }
-    );
-    serverspdy.addListener("error", () => {});
-    serverspdy.prependListener("secureConnection", (socket: tls.TLSSocket) => {
-        if (!socket.listeners("error").length) {
-            socket.on("error", () => {});
-        }
-    });
-    serverhttp.addListener("upgrade", upgradeListener);
-    serverspdy.addListener("upgrade", upgradeListener);
-    serverhttp.addListener("request", requestListener);
-    serverspdy.addListener("request", requestListener);
+    // servernet.addListener("error", () => {});
+    // serverhttp.addListener("clientError", (err: Error, socket: net.Socket) => {
+    //     socket.destroy();
+    //     servernet.emit("clientError", err, socket);
+    // });
+    // serverhttp.addListener("error", () => {});
+    // serverspdy.addListener("clientError", (err: Error, socket: net.Socket) => {
+    //     socket.destroy();
+    //     servernet.emit("clientError", err, socket);
+    // });
+    // serverspdy.addListener(
+    //     "tlsClientError",
+    //     (err: Error, socket: tls.TLSSocket) => {
+    //         socket.destroy();
+    //         servernet.emit("tlsClientError", err, socket);
+    //     }
+    // );
+    // serverspdy.addListener("error", () => {});
+    // serverspdy.prependListener("secureConnection", (socket: tls.TLSSocket) => {
+    //     if (!socket.listeners("error").length) {
+    //         socket.on("error", () => {});
+    //     }
+    // });
+    // serverhttp.addListener("upgrade", upgradeListener);
+    // serverspdy.addListener("upgrade", upgradeListener);
+    // serverhttp.addListener("request", requestListener);
+    // serverspdy.addListener("request", requestListener);
     /* 修复bug
     程序没有监听套接字上的error事件,然后程序崩溃了
 net.Socket
@@ -76,9 +76,9 @@ tls.TLSSocket
         /* 类型“Socket”上不存在属性“allowHalfOpen” */
         // socket.allowHalfOpen = false;
         //如果没有error监听器就添加error 监听器
-        if (!socket.listeners("error").length) {
-            socket.on("error", () => {});
-        }
+        // if (!socket.listeners("error").length) {
+        //     socket.on("error", () => {});
+        // }
         //   let ishttp = false;
         //     let istls = false;
 
@@ -105,7 +105,7 @@ tls.TLSSocket
                 socket.destroy();
                 servernet.emit(
                     "clientError",
-                    new Error("protocol error:it is not http or tls"),
+                    new Error("protocol error not http or tls"),
                     socket
                 );
             }
