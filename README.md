@@ -135,6 +135,10 @@ yarn build
 ```
 
 ```powershell
+yarn generate
+```
+
+```powershell
 yarn serve
 ```
 

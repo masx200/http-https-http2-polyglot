@@ -8,7 +8,8 @@
     "version": "1.1.0",
     "main": "./lib/index.js",
     "scripts": {
-        "test": "./generate-ssl-cert.cmd && node --experimental-modules ./test/test.js ",
+        "generate": "powershell ./generate-ssl-cert.cmd",
+        "test": " node --experimental-modules ./test/test.js ",
         "open": "node --experimental-modules ./test/open.js",
         "build": "tsc&& api-extractor run --local",
         "serve": "node --experimental-modules ./test/serve.js",
