@@ -6,12 +6,12 @@ import { logjson } from "./logjson.js";
 
 process.on("unhandledRejection", console.error);
 
-const fetch = fetch2.context({ session: { ca: cert } }).fetch;
+const fetch = fetch2.context({ session: { rejectUnauthorized:false,ca: cert } }).fetch;
 
 // @ts-ignore
 
 ~((fetch) => {
-    Promise.allSettled(
+    Promise.all(
         urls.map(async (url) => {
             return fetch(url, { timeout: 2000, redirect: "manual" }).then(
                 async (r) => {

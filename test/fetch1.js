@@ -14,6 +14,7 @@ const fetch =
      */
     function (url, opt) {
         const agent = new https.Agent({
+        	rejectUnauthorized:false,
             ca: cert,
         });
         // @ts-ignore
@@ -26,7 +27,7 @@ const fetch =
 // @ts-ignore
 
 ~((fetch) => {
-    Promise.allSettled(
+    Promise.all(
         urls.map(async (url) => {
             return fetch(url, { timeout: 2000, redirect: "manual" }).then(
                 async (r) => {
