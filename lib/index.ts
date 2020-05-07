@@ -15,21 +15,28 @@ export { createServer };
 
 function createServer(
     config: ServerOptions,
-    requestListener: RequestListener = requestNotFound,
-    upgradeListener: UpgradeListener = upgradeNotFound
+    requestListener?: RequestListener,
+    upgradeListener?: UpgradeListener
 ): net.Server {
     if (!(config && typeof config === "object")) {
         throw new Error("options are required!");
     }
-    requestListener = requestListener || requestNotFound;
-    upgradeListener = upgradeListener || upgradeNotFound;
+    // requestListener = requestListener || requestNotFound;
+    // upgradeListener = upgradeListener || upgradeNotFound;
 
     config.allowHalfOpen = false;
 
     const servernet = net.createServer(config);
+
     const serverhttp = http.createServer(config);
     //@ts-ignore
     const serverspdy = spdy.createServer(config);
+    if (typeof requestListener === "function") {
+        servernet.addListener("request", requestListener);
+    }
+    if (typeof upgradeListener === "function") {
+        servernet.addListener("upgrade", upgradeListener);
+    }
     servernet.addListener("error", () => {});
     // serverhttp.addListener("clientError", (err: Error, socket: net.Socket) => {
     //     socket.destroy();
