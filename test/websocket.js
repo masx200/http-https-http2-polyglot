@@ -21,6 +21,7 @@ const server = createServer(
         cert,
     },
     async function (req, res) {
+        debugger
         if (req.url === "/") {
             res.writeHead(200, { "Content-Type": "text/html" });
 
@@ -41,6 +42,7 @@ const server = createServer(
         }
     },
     function (req, socket, head) {
+        debugger
         wsServer.handleUpgrade(req, socket, head, function done(ws) {
             wsServer.emit("connection", ws, req);
         });
