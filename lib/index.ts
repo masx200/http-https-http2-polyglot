@@ -30,12 +30,12 @@ function createServer(
     const serverhttp = http.createServer(config);
     //@ts-ignore
     const serverspdy = spdy.createServer(config);
-    // servernet.addListener("error", () => {});
+    servernet.addListener("error", () => {});
     // serverhttp.addListener("clientError", (err: Error, socket: net.Socket) => {
     //     socket.destroy();
     //     servernet.emit("clientError", err, socket);
     // });
-    // serverhttp.addListener("error", () => {});
+    serverhttp.addListener("error", () => {});
     // serverspdy.addListener("clientError", (err: Error, socket: net.Socket) => {
     //     socket.destroy();
     //     servernet.emit("clientError", err, socket);
@@ -47,12 +47,12 @@ function createServer(
     //         servernet.emit("tlsClientError", err, socket);
     //     }
     // );
-    // serverspdy.addListener("error", () => {});
-    // serverspdy.prependListener("secureConnection", (socket: tls.TLSSocket) => {
-    //     if (!socket.listeners("error").length) {
-    //         socket.on("error", () => {});
-    //     }
-    // });
+    serverspdy.addListener("error", () => {});
+    serverspdy.prependListener("secureConnection", (socket: tls.TLSSocket) => {
+        if (!socket.listeners("error").length) {
+            socket.on("error", () => {});
+        }
+    });
     // serverhttp.addListener("upgrade", upgradeListener);
     // serverspdy.addListener("upgrade", upgradeListener);
     // serverhttp.addListener("request", requestListener);
@@ -76,9 +76,9 @@ tls.TLSSocket
         /* 类型“Socket”上不存在属性“allowHalfOpen” */
         // socket.allowHalfOpen = false;
         //如果没有error监听器就添加error 监听器
-        // if (!socket.listeners("error").length) {
-        //     socket.on("error", () => {});
-        // }
+        if (!socket.listeners("error").length) {
+            socket.on("error", () => {});
+        }
         //   let ishttp = false;
         //     let istls = false;
 
