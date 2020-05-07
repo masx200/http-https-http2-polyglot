@@ -149,7 +149,7 @@ tls.TLSSocket
                 socket.destroy();
                 servernet.emit(
                     "clientError",
-                    new Error("protocol error not http or tls"),
+                    new Error("protocol error, not http or tls"),
                     socket
                 );
             }
