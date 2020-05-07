@@ -70,12 +70,12 @@ function createServer(
     //         return Reflect.apply(target, thisarg, argsarray);
     //     },
     // });
-    if (typeof requestListener === "function") {
-        servernet.addListener("request", requestListener);
-    }
-    if (typeof upgradeListener === "function") {
-        servernet.addListener("upgrade", upgradeListener);
-    }
+    // if (typeof requestListener === "function") {
+    //     servernet.addListener("request", requestListener);
+    // }
+    // if (typeof upgradeListener === "function") {
+    //     servernet.addListener("upgrade", upgradeListener);
+    // }
     servernet.addListener("error", () => {});
     // serverhttp.addListener("clientError", (err: Error, socket: net.Socket) => {
     //     socket.destroy();
@@ -99,10 +99,10 @@ function createServer(
             socket.on("error", () => {});
         }
     });
-    // serverhttp.addListener("upgrade", upgradeListener);
-    // serverspdy.addListener("upgrade", upgradeListener);
-    // serverhttp.addListener("request", requestListener);
-    // serverspdy.addListener("request", requestListener);
+    serverhttp.addListener("upgrade", upgradeListener);
+    serverspdy.addListener("upgrade", upgradeListener);
+    serverhttp.addListener("request", requestListener);
+    serverspdy.addListener("request", requestListener);
     /* 修复bug
     程序没有监听套接字上的error事件,然后程序崩溃了
 net.Socket
