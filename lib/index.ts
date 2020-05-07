@@ -15,22 +15,59 @@ export { createServer };
 
 function createServer(
     config: ServerOptions,
-    requestListener?: RequestListener,
-    upgradeListener?: UpgradeListener
+    requestListener: RequestListener = requestNotFound,
+    upgradeListener: UpgradeListener = upgradeNotFound
 ): net.Server {
     if (!(config && typeof config === "object")) {
         throw new Error("options are required!");
     }
-    // requestListener = requestListener || requestNotFound;
-    // upgradeListener = upgradeListener || upgradeNotFound;
-
     config.allowHalfOpen = false;
+    if (typeof requestListener !== "function") {
+        requestListener = requestNotFound;
+    }
+    if (typeof upgradeListener !== "function") {
+        upgradeListener = upgradeNotFound;
+    }
 
     const servernet = net.createServer(config);
 
     const serverhttp = http.createServer(config);
     //@ts-ignore
     const serverspdy = spdy.createServer(config);
+
+    serverhttp.emit = new Proxy(serverhttp.emit, {
+        apply(target, thisarg, argsarray) {
+            const [event] = argsarray;
+            if (event !== "connection") {
+                Reflect.apply(target, servernet, argsarray);
+            }
+            return Reflect.apply(target, thisarg, argsarray);
+        },
+    });
+
+    serverspdy.emit = new Proxy(serverspdy.emit, {
+        apply(target, thisarg, argsarray) {
+            const [event] = argsarray;
+            if (event !== "connection") {
+                Reflect.apply(target, servernet, argsarray);
+            }
+            return Reflect.apply(target, thisarg, argsarray);
+        },
+    });
+    // servernet.emit = new Proxy(servernet.emit, {
+    //     apply(target, thisarg, argsarray) {
+    //         const [event, ...args] = argsarray;
+    //         if (event === "request" && thisarg.listenerCount(event) === 0) {
+    //             Reflect.apply(requestNotFound, undefined, args);
+    //             return;
+    //         }
+    //         if (event === "upgrade" && thisarg.listenerCount(event) === 0) {
+    //             Reflect.apply(upgradeNotFound, undefined, args);
+    //             return;
+    //         }
+    //         return Reflect.apply(target, thisarg, argsarray);
+    //     },
+    // });
     if (typeof requestListener === "function") {
         servernet.addListener("request", requestListener);
     }
