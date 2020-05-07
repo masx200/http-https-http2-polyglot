@@ -38,20 +38,22 @@ function createServer(
     serverhttp.emit = new Proxy(serverhttp.emit, {
         apply(target, thisarg, argsarray) {
             const [event] = argsarray;
+
+            Reflect.apply(target, thisarg, argsarray);
             if (event !== "connection") {
                 Reflect.apply(target, servernet, argsarray);
             }
-            return Reflect.apply(target, thisarg, argsarray);
         },
     });
 
     serverspdy.emit = new Proxy(serverspdy.emit, {
         apply(target, thisarg, argsarray) {
             const [event] = argsarray;
+
+            Reflect.apply(target, thisarg, argsarray);
             if (event !== "connection") {
                 Reflect.apply(target, servernet, argsarray);
             }
-            return Reflect.apply(target, thisarg, argsarray);
         },
     });
     // servernet.emit = new Proxy(servernet.emit, {
