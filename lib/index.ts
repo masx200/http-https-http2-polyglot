@@ -171,5 +171,24 @@ tls.TLSSocket
         /* 测试发现不能使用on data事件,会收不到响应,多次数据会漏掉 */
     }
 
+    const profun = [
+        "on",
+        "addListener",
+        "once",
+        "prependListener",
+        "prependOnceListener",
+    ];
+    profun.forEach((key) => {
+        const originnetfun = Reflect.get(servernet, key);
+        const originhttpfun = Reflect.get(serverhttp, key);
+        const originspdyfun = Reflect.get(serverspdy, key);
+        Reflect.set(servernet, key, (event: any, listener: any) => {
+            Reflect.apply(originnetfun, servernet, [event, listener]);
+            Reflect.apply(originhttpfun, serverhttp, [event, listener]);
+            Reflect.apply(originspdyfun, serverspdy, [event, listener]);
+            return servernet;
+        });
+    });
+
     return servernet;
 }
