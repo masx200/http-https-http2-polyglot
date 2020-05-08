@@ -1,11 +1,9 @@
 dependencies:
   '@types/node': 13.13.5
   '@types/spdy': 3.4.4
-  http2-wrapper: 1.0.0-beta.4.5
 devDependencies:
   '@microsoft/api-extractor': 7.8.0
   '@types/ws': 7.2.4
-  fetch-h2: 2.4.5
   node-fetch: 2.6.0
   open: 7.0.3
   prettier: 2.0.5
@@ -87,11 +85,6 @@ packages:
     resolution:
       integrity: sha1-MoL9StjEYDqkn3AX3VIKCKNFsrw=
       tarball: '@types/spdy/download/@types/spdy-3.4.4.tgz'
-  /@types/tough-cookie/2.3.7:
-    dev: true
-    resolution:
-      integrity: sha1-l5Q0tZAPnXEPXU4VxGbK246f3Ec=
-      tarball: '@types/tough-cookie/download/@types/tough-cookie-2.3.7.tgz'
   /@types/ws/7.2.4:
     dependencies:
       '@types/node': 13.13.5
@@ -99,13 +92,6 @@ packages:
     resolution:
       integrity: sha1-s4Wfe5wkOyIO+slxbsQscWpylp0=
       tarball: '@types/ws/download/@types/ws-7.2.4.tgz'
-  /already/1.12.0:
-    dependencies:
-      throat: 5.0.0
-    dev: true
-    resolution:
-      integrity: sha1-UPY+1GGmK+XdN9BXlXZr8OaF88Y=
-      tarball: already/download/already-1.12.0.tgz
   /argparse/1.0.10:
     dependencies:
       sprintf-js: 1.0.3
@@ -113,11 +99,6 @@ packages:
     resolution:
       integrity: sha1-vNZ5HqWuCXJeF+WtmIE0zUCz2RE=
       tarball: argparse/download/argparse-1.0.10.tgz
-  /callguard/1.2.1:
-    dev: true
-    resolution:
-      integrity: sha1-PY3y6pHJRqvxxDt9ar3iPTrs/bs=
-      tarball: callguard/download/callguard-1.2.1.tgz
   /colors/1.2.5:
     dev: true
     engines:
@@ -148,28 +129,6 @@ packages:
     resolution:
       integrity: sha1-AU7o+PZpxcWAI9pkuBecCDooxGw=
       tarball: detect-node/download/detect-node-2.0.4.tgz
-  /end-of-stream/1.4.4:
-    dependencies:
-      once: 1.4.0
-    dev: true
-    resolution:
-      integrity: sha1-WuZKX0UFe682JuwU2gyl5LJDHrA=
-      tarball: end-of-stream/download/end-of-stream-1.4.4.tgz
-  /fetch-h2/2.4.5:
-    dependencies:
-      '@types/tough-cookie': 2.3.7
-      already: 1.12.0
-      callguard: 1.2.1
-      get-stream: 5.1.0
-      through2: 3.0.1
-      to-arraybuffer: 1.0.1
-      tough-cookie: 3.0.1
-    dev: true
-    engines:
-      node: '>=10.4'
-    resolution:
-      integrity: sha1-rszR1H4NCUKwR3+FfSfEXUy7Zhw=
-      tarball: fetch-h2/download/fetch-h2-2.4.5.tgz
   /fs-extra/7.0.1:
     dependencies:
       graceful-fs: 4.2.4
@@ -181,15 +140,6 @@ packages:
     resolution:
       integrity: sha1-TxicRKoSO4lfcigE9V6iPq3DSOk=
       tarball: fs-extra/download/fs-extra-7.0.1.tgz
-  /get-stream/5.1.0:
-    dependencies:
-      pump: 3.0.0
-    dev: true
-    engines:
-      node: '>=8'
-    resolution:
-      integrity: sha1-ASA83JJZf5uQkGfD5lbMH008Tck=
-      tarball: get-stream/download/get-stream-5.1.0.tgz
   /graceful-fs/4.2.4:
     dev: true
     resolution:
@@ -215,28 +165,11 @@ packages:
     resolution:
       integrity: sha1-+nFolEq5pRnTN8sL7HKE3D5yPYc=
       tarball: http-deceiver/download/http-deceiver-1.2.7.tgz
-  /http2-wrapper/1.0.0-beta.4.5:
-    dependencies:
-      quick-lru: 5.1.0
-      resolve-alpn: 1.0.0
-    dev: false
-    engines:
-      node: '>=10.19.0'
-    resolution:
-      integrity: sha1-rI6PHL9Kp54ydMielU0YaXqzHoU=
-      tarball: http2-wrapper/download/http2-wrapper-1.0.0-beta.4.5.tgz
   /inherits/2.0.4:
     dev: true
     resolution:
       integrity: sha1-D6LGT5MpF8NDOg3tVTY6rjdBa3w=
       tarball: inherits/download/inherits-2.0.4.tgz
-  /ip-regex/2.1.0:
-    dev: true
-    engines:
-      node: '>=4'
-    resolution:
-      integrity: sha1-+ni/XS5pE8kRzp+BnuUUa7bYROk=
-      tarball: ip-regex/download/ip-regex-2.1.0.tgz
   /is-docker/2.0.0:
     dev: true
     engines:
@@ -307,13 +240,6 @@ packages:
     resolution:
       integrity: sha1-Cb6jND1BhZ69RGKS0RydTbYZCE4=
       tarball: obuf/download/obuf-1.1.2.tgz
-  /once/1.4.0:
-    dependencies:
-      wrappy: 1.0.2
-    dev: true
-    resolution:
-      integrity: sha1-WDsap3WWHUsROsF9nFC6753Xa9E=
-      tarball: once/download/once-1.4.0.tgz
   /open/7.0.3:
     dependencies:
       is-docker: 2.0.0
@@ -342,33 +268,6 @@ packages:
     resolution:
       integrity: sha1-eCDZsWEgzFXKmud5JoCufbptf+I=
       tarball: process-nextick-args/download/process-nextick-args-2.0.1.tgz
-  /psl/1.8.0:
-    dev: true
-    resolution:
-      integrity: sha1-kyb4vPsBOtzABf3/BWrM4CDlHCQ=
-      tarball: psl/download/psl-1.8.0.tgz
-  /pump/3.0.0:
-    dependencies:
-      end-of-stream: 1.4.4
-      once: 1.4.0
-    dev: true
-    resolution:
-      integrity: sha1-tKIRaBW94vTh6mAjVOjHVWUQemQ=
-      tarball: pump/download/pump-3.0.0.tgz
-  /punycode/2.1.1:
-    dev: true
-    engines:
-      node: '>=6'
-    resolution:
-      integrity: sha1-tYsBCsQMIsVldhbI0sLALHv0eew=
-      tarball: punycode/download/punycode-2.1.1.tgz
-  /quick-lru/5.1.0:
-    dev: false
-    engines:
-      node: '>=10'
-    resolution:
-      integrity: sha1-FgLzOb3lVMTazkeIAifsnChp8ug=
-      tarball: quick-lru/download/quick-lru-5.1.0.tgz
   /readable-stream/2.3.7:
     dependencies:
       core-util-is: 1.0.2
@@ -393,11 +292,6 @@ packages:
     resolution:
       integrity: sha1-M3u9o63AcGvT4CRCaihtS0sskZg=
       tarball: readable-stream/download/readable-stream-3.6.0.tgz
-  /resolve-alpn/1.0.0:
-    dev: false
-    resolution:
-      integrity: sha1-dFrWCz1q/0tKSOAbjAvccJWeDow=
-      tarball: resolve-alpn/download/resolve-alpn-1.0.0.tgz
   /resolve/1.8.1:
     dependencies:
       path-parse: 1.0.6
@@ -477,39 +371,11 @@ packages:
     resolution:
       integrity: sha1-QvEUWUpGzxqOMLCoT1bHjD7awh4=
       tarball: string_decoder/download/string_decoder-1.3.0.tgz
-  /throat/5.0.0:
-    dev: true
-    resolution:
-      integrity: sha1-xRmSNYA6rRh1SmZ9ZZtecs4Wdks=
-      tarball: throat/download/throat-5.0.0.tgz
-  /through2/3.0.1:
-    dependencies:
-      readable-stream: 3.6.0
-    dev: true
-    resolution:
-      integrity: sha1-OSducTwzAu3544jdnIEt07glvVo=
-      tarball: through2/download/through2-3.0.1.tgz
   /timsort/0.3.0:
     dev: true
     resolution:
       integrity: sha1-QFQRqOfmM5/mTbmiNN4R3DHgK9Q=
       tarball: timsort/download/timsort-0.3.0.tgz
-  /to-arraybuffer/1.0.1:
-    dev: true
-    resolution:
-      integrity: sha1-fSKbH8xjfkZsoIEYCDanqr/4P0M=
-      tarball: to-arraybuffer/download/to-arraybuffer-1.0.1.tgz
-  /tough-cookie/3.0.1:
-    dependencies:
-      ip-regex: 2.1.0
-      psl: 1.8.0
-      punycode: 2.1.1
-    dev: true
-    engines:
-      node: '>=6'
-    resolution:
-      integrity: sha1-nfT1fnOcJpMKAYGEiH9K233Kc7I=
-      tarball: tough-cookie/download/tough-cookie-3.0.1.tgz
   /tslib/1.11.2:
     dev: true
     resolution:
@@ -557,11 +423,6 @@ packages:
     resolution:
       integrity: sha1-wdjRSTFtPqhShIiVy2oL/oh7h98=
       tarball: wbuf/download/wbuf-1.7.3.tgz
-  /wrappy/1.0.2:
-    dev: true
-    resolution:
-      integrity: sha1-tSQ9jz7BqjXxNkYFvA0QNuMKtp8=
-      tarball: wrappy/download/wrappy-1.0.2.tgz
   /ws/7.2.5:
     dev: true
     engines:
@@ -594,8 +455,6 @@ specifiers:
   '@types/node': ^13.13.0
   '@types/spdy': ^3.4.4
   '@types/ws': ^7.2.4
-  fetch-h2: ^2.4.5
-  http2-wrapper: ^1.0.0-beta.4.5
   node-fetch: ^2.6.0
   open: ^7.0.3
   prettier: ^2.0.4
