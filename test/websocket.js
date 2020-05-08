@@ -46,8 +46,8 @@ const server = createServer(
         });
     }
 );
-server.on("request", console.log);
-server.on("upgrade", console.log);
+//server.on("request", console.log);
+//server.on("upgrade", console.log);
 server.listen(port, "localhost", function () {
     console.log("httpolyglot server listening on port " + port);
 });
