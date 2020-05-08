@@ -34,28 +34,31 @@ function createServer(
     const serverhttp = http.createServer(config);
     //@ts-ignore
     const serverspdy = spdy.createServer(config);
+    serverhttp.addListener("upgrade", upgradeListener);
+    serverspdy.addListener("upgrade", upgradeListener);
+    serverhttp.addListener("request", requestListener);
+    serverspdy.addListener("request", requestListener);
+    // serverhttp.emit = new Proxy(serverhttp.emit, {
+    //     apply(target, thisarg, argsarray) {
+    //         const [event] = argsarray;
 
-    serverhttp.emit = new Proxy(serverhttp.emit, {
-        apply(target, thisarg, argsarray) {
-            const [event] = argsarray;
+    //         Reflect.apply(target, thisarg, argsarray);
+    //         if (event !== "connection") {
+    //             Reflect.apply(target, servernet, argsarray);
+    //         }
+    //     },
+    // });
+/* 代理emit函数出现未知bug */
+    // serverspdy.emit = new Proxy(serverspdy.emit, {
+    //     apply(target, thisarg, argsarray) {
+    //         const [event] = argsarray;
 
-            Reflect.apply(target, thisarg, argsarray);
-            if (event !== "connection") {
-                Reflect.apply(target, servernet, argsarray);
-            }
-        },
-    });
-
-    serverspdy.emit = new Proxy(serverspdy.emit, {
-        apply(target, thisarg, argsarray) {
-            const [event] = argsarray;
-
-            Reflect.apply(target, thisarg, argsarray);
-            if (event !== "connection") {
-                Reflect.apply(target, servernet, argsarray);
-            }
-        },
-    });
+    //         Reflect.apply(target, thisarg, argsarray);
+    //         if (event !== "connection") {
+    //             Reflect.apply(target, servernet, argsarray);
+    //         }
+    //     },
+    // });
     // servernet.emit = new Proxy(servernet.emit, {
     //     apply(target, thisarg, argsarray) {
     //         const [event, ...args] = argsarray;
@@ -99,10 +102,7 @@ function createServer(
             socket.on("error", () => {});
         }
     });
-    serverhttp.addListener("upgrade", upgradeListener);
-    serverspdy.addListener("upgrade", upgradeListener);
-    serverhttp.addListener("request", requestListener);
-    serverspdy.addListener("request", requestListener);
+   
     /* 修复bug
     程序没有监听套接字上的error事件,然后程序崩溃了
 net.Socket
