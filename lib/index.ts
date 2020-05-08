@@ -29,7 +29,7 @@ function createServer(
         upgradeListener = upgradeNotFound;
     }
 
-    const servernet = net.createServer(config);
+    const servernet = net.createServer({ allowHalfOpen: false });
     Reflect.set(servernet, "allowHalfOpen", false);
     assert(Reflect.get(servernet, "allowHalfOpen") === false);
     const serverhttp = http.createServer(config);
