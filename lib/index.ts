@@ -30,7 +30,8 @@ function createServer(
     }
 
     const servernet = net.createServer(config);
-
+    Reflect.set(servernet, "allowHalfOpen", false);
+    assert(Reflect.get(servernet, "allowHalfOpen") === false);
     const serverhttp = http.createServer(config);
     //@ts-ignore
     const serverspdy = spdy.createServer(config);
@@ -113,7 +114,7 @@ tls.TLSSocket
         // serverspdy.emit("connection", socket);
         serverspdy.listeners("connection").forEach((callback) => {
             Promise.resolve().then(() => {
-                callback(socket);
+                Reflect.apply(callback, serverspdy, [socket]);
             });
         });
     }
@@ -121,7 +122,7 @@ tls.TLSSocket
         // serverhttp.emit("connection", socket);
         serverhttp.listeners("connection").forEach((callback) => {
             Promise.resolve().then(() => {
-                callback(socket);
+                Reflect.apply(callback, serverhttp, [socket]);
             });
         });
     }
