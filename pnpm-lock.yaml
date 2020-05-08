@@ -1,6 +1,7 @@
 dependencies:
   '@types/node': 13.13.5
   '@types/spdy': 3.4.4
+  http2-wrapper: 1.0.0-beta.4.5
 devDependencies:
   '@microsoft/api-extractor': 7.8.0
   '@types/ws': 7.2.4
@@ -214,6 +215,16 @@ packages:
     resolution:
       integrity: sha1-+nFolEq5pRnTN8sL7HKE3D5yPYc=
       tarball: http-deceiver/download/http-deceiver-1.2.7.tgz
+  /http2-wrapper/1.0.0-beta.4.5:
+    dependencies:
+      quick-lru: 5.1.0
+      resolve-alpn: 1.0.0
+    dev: false
+    engines:
+      node: '>=10.19.0'
+    resolution:
+      integrity: sha1-rI6PHL9Kp54ydMielU0YaXqzHoU=
+      tarball: http2-wrapper/download/http2-wrapper-1.0.0-beta.4.5.tgz
   /inherits/2.0.4:
     dev: true
     resolution:
@@ -351,6 +362,13 @@ packages:
     resolution:
       integrity: sha1-tYsBCsQMIsVldhbI0sLALHv0eew=
       tarball: punycode/download/punycode-2.1.1.tgz
+  /quick-lru/5.1.0:
+    dev: false
+    engines:
+      node: '>=10'
+    resolution:
+      integrity: sha1-FgLzOb3lVMTazkeIAifsnChp8ug=
+      tarball: quick-lru/download/quick-lru-5.1.0.tgz
   /readable-stream/2.3.7:
     dependencies:
       core-util-is: 1.0.2
@@ -375,6 +393,11 @@ packages:
     resolution:
       integrity: sha1-M3u9o63AcGvT4CRCaihtS0sskZg=
       tarball: readable-stream/download/readable-stream-3.6.0.tgz
+  /resolve-alpn/1.0.0:
+    dev: false
+    resolution:
+      integrity: sha1-dFrWCz1q/0tKSOAbjAvccJWeDow=
+      tarball: resolve-alpn/download/resolve-alpn-1.0.0.tgz
   /resolve/1.8.1:
     dependencies:
       path-parse: 1.0.6
@@ -572,6 +595,7 @@ specifiers:
   '@types/spdy': ^3.4.4
   '@types/ws': ^7.2.4
   fetch-h2: ^2.4.5
+  http2-wrapper: ^1.0.0-beta.4.5
   node-fetch: ^2.6.0
   open: ^7.0.3
   prettier: ^2.0.4

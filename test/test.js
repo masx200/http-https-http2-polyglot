@@ -18,6 +18,7 @@ const files = [
     "early-client-disconnect.js",
     "fetch1.js",
     "fetch2.js",
+    "h2request.js",
 ].map((p) => path.join(__dirname, p));
 files.reduce(async (prev, file) => {
     await prev;
