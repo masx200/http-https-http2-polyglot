@@ -40,7 +40,7 @@ export declare const requestNotFound: (
 ) => void;
 export declare const upgradeNotFound: (
     req: ServerRequest,
-    socket: import("../dist").Socket,
+    socket: Socket,
     head: Buffer
 ) => void;
 //# sourceMappingURL=declaration.d.ts.map
