@@ -17,6 +17,7 @@ const fetch = fetch2.context({
         urls.map(async (url) => {
             return fetch(url, { timeout: 2000, redirect: "manual" }).then(
                 async (r) => {
+                     // @ts-ignore
                     return formatresponse(r);
                 }
             );
