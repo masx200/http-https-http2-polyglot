@@ -110,14 +110,25 @@ tls.TLSSocket
 自动监听error事件,防止服务器意外退出
 */
     function handletls(socket: net.Socket) {
-        serverspdy.emit("connection", socket);
+        // serverspdy.emit("connection", socket);
+        serverspdy.listeners("connection").forEach((callback) => {
+            Promise.resolve().then(() => {
+                callback(socket);
+            });
+        });
     }
     function handlehttp(socket: net.Socket) {
-        serverhttp.emit("connection", socket);
+        // serverhttp.emit("connection", socket);
+        serverhttp.listeners("connection").forEach((callback) => {
+            Promise.resolve().then(() => {
+                callback(socket);
+            });
+        });
     }
     // serverspdy.addListener("connection", connectionListener);
     servernet.addListener("connection", connectionListener);
     function connectionListener(socket: net.Socket) {
+        Reflect.set(socket, "allowHalfOpen", false);
         assert(Reflect.get(socket, "allowHalfOpen") === false);
         /* 类型“Socket”上不存在属性“allowHalfOpen” */
         // socket.allowHalfOpen = false;

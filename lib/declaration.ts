@@ -17,7 +17,7 @@ export interface ServerResponse extends http.ServerResponse {
     socket: Socket;
     push?: (pathname: string, options?: PushOptions) => stream.Writable;
 }
-export type Socket = tls.TLSSocket | net.Socket;
+export type Socket = tls.TLSSocket & net.Socket;
 export type RequestListener = (req: ServerRequest, res: ServerResponse) => void;
 export type UpgradeListener = (
     req: ServerRequest,
@@ -46,6 +46,7 @@ export const upgradeNotFound = function (
     head: Buffer
 ) {
     const res = new http.ServerResponse(req);
+    //@ts-ignore
     requestNotFound(req, res);
     socket.destroy();
 };
