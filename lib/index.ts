@@ -48,7 +48,7 @@ function createServer(
     //         }
     //     },
     // });
-/* 代理emit函数出现未知bug */
+    /* 代理emit函数出现未知bug */
     // serverspdy.emit = new Proxy(serverspdy.emit, {
     //     apply(target, thisarg, argsarray) {
     //         const [event] = argsarray;
@@ -102,7 +102,7 @@ function createServer(
             socket.on("error", () => {});
         }
     });
-   
+
     /* 修复bug
     程序没有监听套接字上的error事件,然后程序崩溃了
 net.Socket

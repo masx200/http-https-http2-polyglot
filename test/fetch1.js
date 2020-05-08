@@ -14,7 +14,7 @@ const fetch =
      */
     function (url, opt) {
         const agent = new https.Agent({
-        	rejectUnauthorized:false,
+            rejectUnauthorized: false,
             ca: cert,
         });
         // @ts-ignore

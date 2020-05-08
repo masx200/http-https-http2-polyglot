@@ -6,7 +6,9 @@ import { logjson } from "./logjson.js";
 
 process.on("unhandledRejection", console.error);
 
-const fetch = fetch2.context({ session: { rejectUnauthorized:false,ca: cert } }).fetch;
+const fetch = fetch2.context({
+    session: { rejectUnauthorized: false, ca: cert },
+}).fetch;
 
 // @ts-ignore
 
