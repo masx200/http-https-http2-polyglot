@@ -1,6 +1,7 @@
 dependencies:
   '@types/node': 13.13.5
   '@types/spdy': 3.4.4
+  got: 11.1.2
 devDependencies:
   '@microsoft/api-extractor': 7.8.0
   '@types/ws': 7.2.4
@@ -64,11 +65,49 @@ packages:
     resolution:
       integrity: sha1-XXpDfU6cVk/xuOh2IV/KlsdIWKE=
       tarball: '@rushstack/ts-command-line/download/@rushstack/ts-command-line-4.3.14.tgz'
+  /@sindresorhus/is/2.1.1:
+    dev: false
+    engines:
+      node: '>=10'
+    resolution:
+      integrity: sha1-zv9qKKW0hnwt1KG6UT3ieMy+i7E=
+      tarball: '@sindresorhus/is/download/@sindresorhus/is-2.1.1.tgz'
+  /@szmarczak/http-timer/4.0.5:
+    dependencies:
+      defer-to-connect: 2.0.0
+    dev: false
+    engines:
+      node: '>=10'
+    resolution:
+      integrity: sha1-v71QIR6d+lG6B9pYoUzf0zMgUVI=
+      tarball: '@szmarczak/http-timer/download/@szmarczak/http-timer-4.0.5.tgz'
   /@types/argparse/1.0.33:
     dev: true
     resolution:
       integrity: sha1-JyhmlCfN10qZ5TyfRXyihmo3xS0=
       tarball: '@types/argparse/download/@types/argparse-1.0.33.tgz'
+  /@types/cacheable-request/6.0.1:
+    dependencies:
+      '@types/http-cache-semantics': 4.0.0
+      '@types/keyv': 3.1.1
+      '@types/node': 13.13.5
+      '@types/responselike': 1.0.0
+    dev: false
+    resolution:
+      integrity: sha1-XSLz3e0f06hMC761A5p0GcLJGXY=
+      tarball: '@types/cacheable-request/download/@types/cacheable-request-6.0.1.tgz'
+  /@types/http-cache-semantics/4.0.0:
+    dev: false
+    resolution:
+      integrity: sha1-kUB3lzaqJlVjXudW4kZ9eHz+iio=
+      tarball: '@types/http-cache-semantics/download/@types/http-cache-semantics-4.0.0.tgz'
+  /@types/keyv/3.1.1:
+    dependencies:
+      '@types/node': 13.13.5
+    dev: false
+    resolution:
+      integrity: sha1-5FpFMk/KnatxarEjDuJJyftSz6c=
+      tarball: '@types/keyv/download/@types/keyv-3.1.1.tgz'
   /@types/node/10.17.13:
     dev: true
     resolution:
@@ -78,6 +117,13 @@ packages:
     resolution:
       integrity: sha1-luw7Cvr9ZKTM6pEHt1v4SJ8OV2U=
       tarball: '@types/node/download/@types/node-13.13.5.tgz?cache=0&other_urls=https%3A%2F%2Fregistry.npm.taobao.org%2F%40types%2Fnode%2Fdownload%2F%40types%2Fnode-13.13.5.tgz'
+  /@types/responselike/1.0.0:
+    dependencies:
+      '@types/node': 13.13.5
+    dev: false
+    resolution:
+      integrity: sha1-JR9P59FU0rrRJavhtCmyOv0mLik=
+      tarball: '@types/responselike/download/@types/responselike-1.0.0.tgz'
   /@types/spdy/3.4.4:
     dependencies:
       '@types/node': 13.13.5
@@ -99,6 +145,35 @@ packages:
     resolution:
       integrity: sha1-vNZ5HqWuCXJeF+WtmIE0zUCz2RE=
       tarball: argparse/download/argparse-1.0.10.tgz
+  /cacheable-lookup/4.3.0:
+    dev: false
+    engines:
+      node: '>=10'
+    resolution:
+      integrity: sha1-hv8cs49kjMaroo/v/gCPgItANVA=
+      tarball: cacheable-lookup/download/cacheable-lookup-4.3.0.tgz
+  /cacheable-request/7.0.1:
+    dependencies:
+      clone-response: 1.0.2
+      get-stream: 5.1.0
+      http-cache-semantics: 4.1.0
+      keyv: 4.0.1
+      lowercase-keys: 2.0.0
+      normalize-url: 4.5.0
+      responselike: 2.0.0
+    dev: false
+    engines:
+      node: '>=8'
+    resolution:
+      integrity: sha1-BiAxwoViMngu1pSiV/o12pOUKlg=
+      tarball: cacheable-request/download/cacheable-request-7.0.1.tgz
+  /clone-response/1.0.2:
+    dependencies:
+      mimic-response: 1.0.1
+    dev: false
+    resolution:
+      integrity: sha1-0dyXOSAxTfZ/vrlCI7TuNQI56Ws=
+      tarball: clone-response/download/clone-response-1.0.2.tgz
   /colors/1.2.5:
     dev: true
     engines:
@@ -124,11 +199,34 @@ packages:
     resolution:
       integrity: sha1-O3ImAlUQnGtYnO4FDx1RYTlmR5E=
       tarball: debug/download/debug-4.1.1.tgz
+  /decompress-response/5.0.0:
+    dependencies:
+      mimic-response: 2.1.0
+    dev: false
+    engines:
+      node: '>=10'
+    resolution:
+      integrity: sha1-eEk5boDj0euoyy9170kw92Rhyw8=
+      tarball: decompress-response/download/decompress-response-5.0.0.tgz
+  /defer-to-connect/2.0.0:
+    dev: false
+    engines:
+      node: '>=10'
+    resolution:
+      integrity: sha1-g9axmdsEFZOshNeBtSIjCMz0wsE=
+      tarball: defer-to-connect/download/defer-to-connect-2.0.0.tgz
   /detect-node/2.0.4:
     dev: true
     resolution:
       integrity: sha1-AU7o+PZpxcWAI9pkuBecCDooxGw=
       tarball: detect-node/download/detect-node-2.0.4.tgz
+  /end-of-stream/1.4.4:
+    dependencies:
+      once: 1.4.0
+    dev: false
+    resolution:
+      integrity: sha1-WuZKX0UFe682JuwU2gyl5LJDHrA=
+      tarball: end-of-stream/download/end-of-stream-1.4.4.tgz
   /fs-extra/7.0.1:
     dependencies:
       graceful-fs: 4.2.4
@@ -140,6 +238,35 @@ packages:
     resolution:
       integrity: sha1-TxicRKoSO4lfcigE9V6iPq3DSOk=
       tarball: fs-extra/download/fs-extra-7.0.1.tgz
+  /get-stream/5.1.0:
+    dependencies:
+      pump: 3.0.0
+    dev: false
+    engines:
+      node: '>=8'
+    resolution:
+      integrity: sha1-ASA83JJZf5uQkGfD5lbMH008Tck=
+      tarball: get-stream/download/get-stream-5.1.0.tgz
+  /got/11.1.2:
+    dependencies:
+      '@sindresorhus/is': 2.1.1
+      '@szmarczak/http-timer': 4.0.5
+      '@types/cacheable-request': 6.0.1
+      '@types/responselike': 1.0.0
+      cacheable-lookup: 4.3.0
+      cacheable-request: 7.0.1
+      decompress-response: 5.0.0
+      get-stream: 5.1.0
+      http2-wrapper: 1.0.0-beta.4.5
+      lowercase-keys: 2.0.0
+      p-cancelable: 2.0.0
+      responselike: 2.0.0
+    dev: false
+    engines:
+      node: '>=10.19.0'
+    resolution:
+      integrity: sha1-uzjtYndnD70QOhuFjP/5WB5iBF4=
+      tarball: got/download/got-11.1.2.tgz
   /graceful-fs/4.2.4:
     dev: true
     resolution:
@@ -160,11 +287,26 @@ packages:
     resolution:
       integrity: sha1-h3dMCUnlE/QuhFdbPEVoH63ioLI=
       tarball: hpack.js/download/hpack.js-2.1.6.tgz
+  /http-cache-semantics/4.1.0:
+    dev: false
+    resolution:
+      integrity: sha1-SekcXL82yblLz81xwj1SSex045A=
+      tarball: http-cache-semantics/download/http-cache-semantics-4.1.0.tgz
   /http-deceiver/1.2.7:
     dev: true
     resolution:
       integrity: sha1-+nFolEq5pRnTN8sL7HKE3D5yPYc=
       tarball: http-deceiver/download/http-deceiver-1.2.7.tgz
+  /http2-wrapper/1.0.0-beta.4.5:
+    dependencies:
+      quick-lru: 5.1.0
+      resolve-alpn: 1.0.0
+    dev: false
+    engines:
+      node: '>=10.19.0'
+    resolution:
+      integrity: sha1-rI6PHL9Kp54ydMielU0YaXqzHoU=
+      tarball: http2-wrapper/download/http2-wrapper-1.0.0-beta.4.5.tgz
   /inherits/2.0.4:
     dev: true
     resolution:
@@ -196,6 +338,11 @@ packages:
     resolution:
       integrity: sha1-o6vicYryQaKykE+EpiWXDzia4yo=
       tarball: jju/download/jju-1.4.0.tgz
+  /json-buffer/3.0.1:
+    dev: false
+    resolution:
+      integrity: sha1-kziAKjDTtmBfvgYT4JQAjKjAWhM=
+      tarball: json-buffer/download/json-buffer-3.0.1.tgz
   /jsonfile/4.0.0:
     dev: true
     optionalDependencies:
@@ -203,6 +350,13 @@ packages:
     resolution:
       integrity: sha1-h3Gq4HmbZAdrdmQPygWPnBDjPss=
       tarball: jsonfile/download/jsonfile-4.0.0.tgz
+  /keyv/4.0.1:
+    dependencies:
+      json-buffer: 3.0.1
+    dev: false
+    resolution:
+      integrity: sha1-n+cDy0qU1tEXKdMgrwMzB+/QLuY=
+      tarball: keyv/download/keyv-4.0.1.tgz
   /lodash.get/4.4.2:
     dev: true
     resolution:
@@ -218,6 +372,27 @@ packages:
     resolution:
       integrity: sha1-tEf2ZwoEVbv+7dETku/zMOoJdUg=
       tarball: lodash/download/lodash-4.17.15.tgz
+  /lowercase-keys/2.0.0:
+    dev: false
+    engines:
+      node: '>=8'
+    resolution:
+      integrity: sha1-JgPni3tLAAbLyi+8yKMgJVislHk=
+      tarball: lowercase-keys/download/lowercase-keys-2.0.0.tgz
+  /mimic-response/1.0.1:
+    dev: false
+    engines:
+      node: '>=4'
+    resolution:
+      integrity: sha1-SSNTiHju9CBjy4o+OweYeBSHqxs=
+      tarball: mimic-response/download/mimic-response-1.0.1.tgz
+  /mimic-response/2.1.0:
+    dev: false
+    engines:
+      node: '>=8'
+    resolution:
+      integrity: sha1-0Tdj019hPQnsN+uzC6wEacDuj0M=
+      tarball: mimic-response/download/mimic-response-2.1.0.tgz
   /minimalistic-assert/1.0.1:
     dev: true
     resolution:
@@ -235,11 +410,25 @@ packages:
     resolution:
       integrity: sha1-5jNFY4bUqlWGP2dqerDaqP3ssP0=
       tarball: node-fetch/download/node-fetch-2.6.0.tgz
+  /normalize-url/4.5.0:
+    dev: false
+    engines:
+      node: '>=8'
+    resolution:
+      integrity: sha1-RTNUCH5sqWlXvY9br3U/WYIUISk=
+      tarball: normalize-url/download/normalize-url-4.5.0.tgz
   /obuf/1.1.2:
     dev: true
     resolution:
       integrity: sha1-Cb6jND1BhZ69RGKS0RydTbYZCE4=
       tarball: obuf/download/obuf-1.1.2.tgz
+  /once/1.4.0:
+    dependencies:
+      wrappy: 1.0.2
+    dev: false
+    resolution:
+      integrity: sha1-WDsap3WWHUsROsF9nFC6753Xa9E=
+      tarball: once/download/once-1.4.0.tgz
   /open/7.0.3:
     dependencies:
       is-docker: 2.0.0
@@ -250,6 +439,13 @@ packages:
     resolution:
       integrity: sha1-21UaGvnHq0x69mQTmTCCYThTHEg=
       tarball: open/download/open-7.0.3.tgz
+  /p-cancelable/2.0.0:
+    dev: false
+    engines:
+      node: '>=8'
+    resolution:
+      integrity: sha1-SjdA9b2vXtXXw+NIgsb7XWsmam4=
+      tarball: p-cancelable/download/p-cancelable-2.0.0.tgz
   /path-parse/1.0.6:
     dev: true
     resolution:
@@ -268,6 +464,21 @@ packages:
     resolution:
       integrity: sha1-eCDZsWEgzFXKmud5JoCufbptf+I=
       tarball: process-nextick-args/download/process-nextick-args-2.0.1.tgz
+  /pump/3.0.0:
+    dependencies:
+      end-of-stream: 1.4.4
+      once: 1.4.0
+    dev: false
+    resolution:
+      integrity: sha1-tKIRaBW94vTh6mAjVOjHVWUQemQ=
+      tarball: pump/download/pump-3.0.0.tgz
+  /quick-lru/5.1.0:
+    dev: false
+    engines:
+      node: '>=10'
+    resolution:
+      integrity: sha1-FgLzOb3lVMTazkeIAifsnChp8ug=
+      tarball: quick-lru/download/quick-lru-5.1.0.tgz
   /readable-stream/2.3.7:
     dependencies:
       core-util-is: 1.0.2
@@ -292,6 +503,11 @@ packages:
     resolution:
       integrity: sha1-M3u9o63AcGvT4CRCaihtS0sskZg=
       tarball: readable-stream/download/readable-stream-3.6.0.tgz
+  /resolve-alpn/1.0.0:
+    dev: false
+    resolution:
+      integrity: sha1-dFrWCz1q/0tKSOAbjAvccJWeDow=
+      tarball: resolve-alpn/download/resolve-alpn-1.0.0.tgz
   /resolve/1.8.1:
     dependencies:
       path-parse: 1.0.6
@@ -299,6 +515,13 @@ packages:
     resolution:
       integrity: sha1-gvHsGaQjrB+9CAsLqwa6NuhKeiY=
       tarball: resolve/download/resolve-1.8.1.tgz?cache=0&other_urls=https%3A%2F%2Fregistry.npm.taobao.org%2Fresolve%2Fdownload%2Fresolve-1.8.1.tgz
+  /responselike/2.0.0:
+    dependencies:
+      lowercase-keys: 2.0.0
+    dev: false
+    resolution:
+      integrity: sha1-JjkbzDF091D5p56sxAoSpcQtdyM=
+      tarball: responselike/download/responselike-2.0.0.tgz
   /safe-buffer/5.1.2:
     dev: true
     resolution:
@@ -423,6 +646,11 @@ packages:
     resolution:
       integrity: sha1-wdjRSTFtPqhShIiVy2oL/oh7h98=
       tarball: wbuf/download/wbuf-1.7.3.tgz
+  /wrappy/1.0.2:
+    dev: false
+    resolution:
+      integrity: sha1-tSQ9jz7BqjXxNkYFvA0QNuMKtp8=
+      tarball: wrappy/download/wrappy-1.0.2.tgz
   /ws/7.2.5:
     dev: true
     engines:
@@ -455,6 +683,7 @@ specifiers:
   '@types/node': ^13.13.0
   '@types/spdy': ^3.4.4
   '@types/ws': ^7.2.4
+  got: ^11.1.2
   node-fetch: ^2.6.0
   open: ^7.0.3
   prettier: ^2.0.4

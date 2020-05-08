@@ -38,15 +38,26 @@ export const requestNotFound = function (
     res.setHeader("content-type", "text/html");
 
     res.end("404 Not Found");
-    res.destroy();
+    // res.destroy();
 };
 export const upgradeNotFound = function (
     req: ServerRequest,
     socket: Socket,
     head: Buffer
 ) {
-    const res = new http.ServerResponse(req);
-    //@ts-ignore
-    requestNotFound(req, res);
+    // const res = new http.ServerResponse(req);
+    // //@ts-ignore
+    // requestNotFound(req, res);
+    const response = [
+        `HTTP/1.1 404 Not Found`,
+        `content-type: text/html`,
+        `Date: Fri, 08 May 2020 16:20:58 GMT`,
+        `Connection: keep-alive`,
+        `Content-Length: 0`,
+        "",
+        "",
+    ].join("\r\n");
+    socket.write(response);
+    socket.end();
     socket.destroy();
 };
