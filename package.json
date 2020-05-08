@@ -33,6 +33,7 @@
         "@types/spdy": "^3.4.4"
     },
     "devDependencies": {
+        "fetch-h2": "^2.4.5",
         "@microsoft/api-extractor": "^7.7.13",
         "@types/ws": "^7.2.4",
         "node-fetch": "^2.6.0",

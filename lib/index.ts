@@ -112,7 +112,7 @@ tls.TLSSocket
 */
     function handletls(socket: net.Socket) {
         // serverspdy.emit("connection", socket);
-        serverspdy.listeners("connection").forEach((callback) => {
+        serverspdy.listeners("connection").forEach((callback: Function) => {
             Promise.resolve().then(() => {
                 Reflect.apply(callback, serverspdy, [socket]);
             });
