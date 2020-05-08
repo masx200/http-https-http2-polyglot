@@ -7,6 +7,7 @@ import { cert, key } from "./key-cert.js";
 const port = 8999;
 const wsServer = new ws.Server({ noServer: true });
 wsServer.on("connection", (websocket, req) => {
+    websocket.on("error", () => {});
     websocket.send(JSON.stringify(req.headers));
     websocket.send(
         ("encrypted" in req.socket ? "HTTPS" : "HTTP") + " Connection!"
