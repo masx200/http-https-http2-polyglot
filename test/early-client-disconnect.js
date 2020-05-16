@@ -22,12 +22,19 @@ server.listen(port, "localhost", function () {
         console.log("client connect");
     });
     socket.on("error", console.error);
+    socket.on("data", (data) => console.log(String(data)));
     socket.write(Buffer.from([0]));
 
     socket.end(() => {
         console.log("client end");
     });
     socket.on("close", (e) => {
+        console.log("client close", e);
+        server.close(() => {
+            console.log("server close");
+        });
+    });
+    socket.on("end", (e) => {
         console.log("client close", e);
         server.close(() => {
             console.log("server close");

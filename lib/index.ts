@@ -170,6 +170,7 @@ tls.TLSSocket
                     "",
                 ].join("\r\n");
                 socket.write(response);
+                socket.end();
                 socket.destroy();
                 servernet.emit(
                     "clientError",

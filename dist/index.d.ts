@@ -55,7 +55,7 @@ export declare type UpgradeListener = (
 
 export declare const upgradeNotFound: (
     req: ServerRequest,
-    socket: import("../dist").Socket,
+    socket: Socket,
     head: Buffer
 ) => void;
 
