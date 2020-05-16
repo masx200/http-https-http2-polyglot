@@ -160,6 +160,17 @@ tls.TLSSocket
 
                 handlehttp(socket);
             } else {
+
+const response = [
+        `HTTP/1.1 400 bad request`,
+        `content-type: text/html`,
+     //   `Date: Fri, 08 May 2020 16:20:58 GMT`,
+        `Connection: keep-alive`,
+        `Content-Length: 0`,
+        "",
+        "",
+    ].join("\r\n");
+    socket.write(response);
                 socket.destroy();
                 servernet.emit(
                     "clientError",
