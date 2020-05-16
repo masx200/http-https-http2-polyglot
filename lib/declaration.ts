@@ -51,7 +51,7 @@ export const upgradeNotFound = function (
     const response = [
         `HTTP/1.1 404 Not Found`,
         `content-type: text/html`,
-        `Date: Fri, 08 May 2020 16:20:58 GMT`,
+      //  `Date: Fri, 08 May 2020 16:20:58 GMT`,
         `Connection: keep-alive`,
         `Content-Length: 0`,
         "",
