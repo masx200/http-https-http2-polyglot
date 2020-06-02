@@ -8,6 +8,7 @@ const server = createServer(
         cert,
     },
     async function (req, res) {
+		debugger
         res.writeHead(200, { "Content-Type": "text/html" });
         const body =
             ("encrypted" in req.socket ? "HTTPS" : "HTTP") +
