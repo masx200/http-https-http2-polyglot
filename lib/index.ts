@@ -21,6 +21,10 @@ function createServer(
     if (!(config && typeof config === "object")) {
         throw new Error("options are required!");
     }
+        
+    if (!options.pfx && !(options.key && options.cert)) {
+		throw new Error('options.pfx or options.key and options.cert are required!');
+	}    
     config.allowHalfOpen = false;
     if (typeof requestListener !== "function") {
         requestListener = requestNotFound;
