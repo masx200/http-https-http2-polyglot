@@ -37,8 +37,11 @@ function createServer(
     Reflect.set(servernet, "allowHalfOpen", false);
     assert(Reflect.get(servernet, "allowHalfOpen") === false);
     const serverhttp = http.createServer(config);
+	    Reflect.set(serverhttp, "allowHalfOpen", false);
     //@ts-ignore
     const serverspdy = spdy.createServer(config);
+	    
+	    Reflect.set(serverspdy, "allowHalfOpen", false);
     serverhttp.addListener("upgrade", upgradeListener);
     serverspdy.addListener("upgrade", upgradeListener);
     serverhttp.addListener("request", requestListener);
