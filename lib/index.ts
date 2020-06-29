@@ -49,64 +49,11 @@ function createServer(
     serverspdy.addListener("upgrade", upgradeListener);
     serverhttp.addListener("request", requestListener);
     serverspdy.addListener("request", requestListener);
-    // serverhttp.emit = new Proxy(serverhttp.emit, {
-    //     apply(target, thisarg, argsarray) {
-    //         const [event] = argsarray;
-
-    //         Reflect.apply(target, thisarg, argsarray);
-    //         if (event !== "connection") {
-    //             Reflect.apply(target, servernet, argsarray);
-    //         }
-    //     },
-    // });
-    /* 代理emit函数出现未知bug */
-    // serverspdy.emit = new Proxy(serverspdy.emit, {
-    //     apply(target, thisarg, argsarray) {
-    //         const [event] = argsarray;
-
-    //         Reflect.apply(target, thisarg, argsarray);
-    //         if (event !== "connection") {
-    //             Reflect.apply(target, servernet, argsarray);
-    //         }
-    //     },
-    // });
-    // servernet.emit = new Proxy(servernet.emit, {
-    //     apply(target, thisarg, argsarray) {
-    //         const [event, ...args] = argsarray;
-    //         if (event === "request" && thisarg.listenerCount(event) === 0) {
-    //             Reflect.apply(requestNotFound, undefined, args);
-    //             return;
-    //         }
-    //         if (event === "upgrade" && thisarg.listenerCount(event) === 0) {
-    //             Reflect.apply(upgradeNotFound, undefined, args);
-    //             return;
-    //         }
-    //         return Reflect.apply(target, thisarg, argsarray);
-    //     },
-    // });
-    // if (typeof requestListener === "function") {
-    //     servernet.addListener("request", requestListener);
-    // }
-    // if (typeof upgradeListener === "function") {
-    //     servernet.addListener("upgrade", upgradeListener);
-    // }
+   
     servernet.addListener("error", () => {});
-    // serverhttp.addListener("clientError", (err: Error, socket: net.Socket) => {
-    //     socket.destroy();
-    //     servernet.emit("clientError", err, socket);
-    // });
+    
     serverhttp.addListener("error", () => {});
-    // serverspdy.addListener("clientError", (err: Error, socket: net.Socket) => {
-    //     socket.destroy();
-    //     servernet.emit("clientError", err, socket);
-    // });
-    // serverspdy.addListener(
-    //     "tlsClientError",
-    //     (err: Error, socket: tls.TLSSocket) => {
-    //         socket.destroy();
-    //         servernet.emit("tlsClientError", err, socket);
-    //     }
-    // );
+    
     serverspdy.addListener("error", () => {});
     serverspdy.prependListener("secureConnection", (socket: tls.TLSSocket) => {
         if (!socket.listeners("error").length) {
