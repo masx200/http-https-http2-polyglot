@@ -25,6 +25,8 @@ function createServer(
     if (!options.pfx && !(options.key && options.cert)) {
 		throw new Error('options.pfx or options.key and options.cert are required!');
 	}    
+	    
+	    config=Object.assign({},config)
     config.allowHalfOpen = false;
 	    config.allowHTTP1= true
     if (typeof requestListener !== "function") {
