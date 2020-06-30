@@ -14,21 +14,23 @@ export * from "./declaration.js";
 export { createServer };
 
 function createServer(
-    config: ServerOptions,
+    options: ServerOptions,
     requestListener: RequestListener = requestNotFound,
     upgradeListener: UpgradeListener = upgradeNotFound
 ): net.Server {
-    if (!(config && typeof config === "object")) {
+    if (!(options && typeof options === "object")) {
         throw new Error("options are required!");
     }
-        
+
     if (!options.pfx && !(options.key && options.cert)) {
-		throw new Error('options.pfx or options.key and options.cert are required!');
-	}    
-	    
-	    config=Object.assign({},config)
-    config.allowHalfOpen = false;
-	    config.allowHTTP1= true
+        throw new Error(
+            "options.pfx or options.key and options.cert are required!"
+        );
+    }
+
+    options = Object.assign({}, options);
+    options.allowHalfOpen = false;
+    options.allowHTTP1 = true;
     if (typeof requestListener !== "function") {
         requestListener = requestNotFound;
     }
@@ -39,21 +41,21 @@ function createServer(
     const servernet = net.createServer({ allowHalfOpen: false });
     Reflect.set(servernet, "allowHalfOpen", false);
     assert(Reflect.get(servernet, "allowHalfOpen") === false);
-    const serverhttp = http.createServer(config);
-	    Reflect.set(serverhttp, "allowHalfOpen", false);
+    const serverhttp = http.createServer(options);
+    Reflect.set(serverhttp, "allowHalfOpen", false);
     //@ts-ignore
-    const serverspdy = spdy.createServer(config);
-	    
-	    Reflect.set(serverspdy, "allowHalfOpen", false);
+    const serverspdy = spdy.createServer(options);
+
+    Reflect.set(serverspdy, "allowHalfOpen", false);
     serverhttp.addListener("upgrade", upgradeListener);
     serverspdy.addListener("upgrade", upgradeListener);
     serverhttp.addListener("request", requestListener);
     serverspdy.addListener("request", requestListener);
-   
+
     servernet.addListener("error", () => {});
-    
+
     serverhttp.addListener("error", () => {});
-    
+
     serverspdy.addListener("error", () => {});
     serverspdy.prependListener("secureConnection", (socket: tls.TLSSocket) => {
         if (!socket.listeners("error").length) {

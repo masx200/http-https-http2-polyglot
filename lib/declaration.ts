@@ -29,7 +29,7 @@ export type ServerOptions = spdy.ServerOptions & {
     pauseOnConnect?: boolean | undefined;
 } & http.ServerOptions &
     tls.TlsOptions &
-    https.ServerOptions;
+    https.ServerOptions&{allowHTTP1:boolean};
 export const requestNotFound = function (
     req: ServerRequest,
     res: ServerResponse

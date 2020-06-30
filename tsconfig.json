@@ -9,7 +9,7 @@
         "moduleResolution": "node",
         "resolveJsonModule": false,
         "declaration": true,
-        "declarationMap": true,
+        "declarationMap": false,
         "allowJs": true,
         "checkJs": false,
         "charset": "utf-8",
