@@ -22,7 +22,7 @@ https://github.com/httptoolkit/httpolyglot
 
 要求
 
--   [node.js](http://nodejs.org/) -- v12.0.0 or newer
+[node.js](http://nodejs.org/) -- v12.0.0 or newer
 
 # Install
 
@@ -56,19 +56,19 @@ const ishttp2 = "h2" === req.socket.alpnProtocol;
 
 例子
 
--http2 服务器推送
+`http2` 服务器推送
 
--   http2 server push
+`http2` server push
 
 https://github.com/masx200/http-https-spdy-http2-polyglot/blob/master/test/push.js
 
--   Websocket server
-    Websocket 服务器
+Websocket server
+Websocket 服务器
 
 https://github.com/masx200/http-https-spdy-http2-polyglot/blob/master/test/websocket.js
 
--   Simple Determine the connection protocol
-    简单确定连接协议
+Simple Determine the connection protocol
+简单确定连接协议
 
 ```javascript
 import * as httpolyglot from "@masx200/http-https-http2-polyglot";
@@ -92,13 +92,13 @@ server.listen(port, "localhost", function () {
 });
 ```
 
--   redirect all http connections to https:
-    将所有 http 连接重定向到 https
-    https://github.com/masx200/http-https-spdy-http2-polyglot/blob/master/test/redirect.js
+redirect all http connections to https:
+将所有 http 连接重定向到 https
+https://github.com/masx200/http-https-spdy-http2-polyglot/blob/master/test/redirect.js
 
--   create a "404 not found" server
-    创建“ 404 未找到”服务器
-    https://github.com/masx200/http-https-spdy-http2-polyglot/blob/master/test/notfound.js
+create a "404 not found" server
+创建“ 404 未找到”服务器
+https://github.com/masx200/http-https-spdy-http2-polyglot/blob/master/test/notfound.js
 
 # API
 
@@ -106,8 +106,8 @@ server.listen(port, "localhost", function () {
 
 https://github.com/masx200/http-https-spdy-http2-polyglot/blob/master/dist/index.d.ts
 
--   **createServer** - Creates and returns a new Server instance.
-    创建并返回一个新的 Server 实例。
+**createServer** - Creates and returns a new Server instance.
+创建并返回一个新的 Server 实例。
 
 ```ts
 declare function createServer(
@@ -167,7 +167,9 @@ Do not add "request" or "upgrade" event listener because it is not recommended t
 https://github.com/lvgithub/blog/blob/master/http_and_https_over_same_port/README.MD
 
 TLS and HTTP connections are easy to distinguish based on the first byte sent by clients trying to connect. See this comment for more information.
+
 TLS 和 HTTP 连接很容易根据尝试连接的客户端发送的第一个字节进行区分。有关更多信息，请参见此评论。
+
 https://github.com/mscdex/httpolyglot/issues/3#issuecomment-173680155
 
 https://github.com/httptoolkit/httpolyglot/blob/master/lib/index.js
