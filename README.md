@@ -17,7 +17,7 @@ https://github.com/httptoolkit/httpolyglot
 # Install
 
 ```shell
-yarn add spdy  @masx200/http-https-spdy-http2-polyglot
+yarn add spdy  @masx200/http-https-http2-polyglot
 ```
 
 # Connection protocol judgment
@@ -47,7 +47,7 @@ https://github.com/masx200/http-https-spdy-http2-polyglot/blob/master/test/webso
 -   Simple Determine the connection protocol
 
 ```javascript
-import * as httpolyglot from "@masx200/http-https-spdy-http2-polyglot";
+import * as httpolyglot from "@masx200/http-https-http2-polyglot";
 import fs from "fs";
 
 const port = 9000;
