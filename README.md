@@ -62,11 +62,114 @@ const ishttp2 = "h2" === req.socket.alpnProtocol;
 
 https://github.com/masx200/http-https-spdy-http2-polyglot/blob/master/test/push.js
 
+```js
+import { createServer } from "../lib/index.js";
+import { cert, key } from "./key-cert.js";
+const port = 9002;
+// @ts-ignore
+
+const server = createServer(
+    {
+        key,
+        cert,
+    },
+    (req, res) => {
+        if (req.url == "/main.js") {
+            res.statusCode = 200;
+            res.setHeader("content-type", "application/javascript");
+            res.end('alert("not from push stream")');
+            return;
+        } else {
+            res.writeHead(200, { "Content-Type": "text/html" });
+
+            if (res.push) {
+                var stream = res.push("/main.js", {
+                    status: 200, // optional
+                    method: "GET", // optional
+                    request: {
+                        accept: "*/*",
+                    },
+                    response: {
+                        "content-type": "application/javascript",
+                    },
+                });
+                stream.on("error", function (e) {
+                    console.log(e);
+                });
+                stream.end('alert("hello from push stream!");');
+            }
+
+            res.end('push<script src="/main.js"></script>');
+        }
+    }
+);
+server.listen(port, "localhost", function () {
+    console.log("httpolyglot server listening on port " + port);
+});
+```
+
 Websocket server
 
 Websocket 服务器
 
 https://github.com/masx200/http-https-spdy-http2-polyglot/blob/master/test/websocket.js
+
+```js
+import fs from "fs";
+import path, { dirname } from "path";
+import { fileURLToPath } from "url";
+import ws from "ws";
+import { createServer } from "../lib/index.js";
+import { cert, key } from "./key-cert.js";
+const port = 8999;
+const wsServer = new ws.Server({ noServer: true });
+wsServer.on("connection", (websocket, req) => {
+    websocket.on("error", () => {});
+    websocket.send(JSON.stringify(req.headers));
+    websocket.send(
+        ("encrypted" in req.socket ? "HTTPS" : "HTTP") + " Connection!"
+    );
+});
+// @ts-ignore
+const __filename = fileURLToPath(import.meta.url);
+const __dirname = dirname(__filename);
+const server = createServer(
+    {
+        key,
+        cert,
+    },
+    async function (req, res) {
+        if (req.url === "/") {
+            res.writeHead(200, { "Content-Type": "text/html" });
+
+            res.end(
+                "websocket<script type='module' src='./index.js'></script>"
+            );
+        } else if (req.url === "/index.js") {
+            res.writeHead(200, { "Content-Type": "text/javascript" });
+            const jsfile = await fs.promises.readFile(
+                path.join(__dirname, "index.js")
+            );
+            res.write(jsfile);
+            res.end();
+        } else {
+            res.statusCode = 404;
+            res.write("404");
+            res.end();
+        }
+    },
+    function (req, socket, head) {
+        wsServer.handleUpgrade(req, socket, head, function done(ws) {
+            wsServer.emit("connection", ws, req);
+        });
+    }
+);
+//server.on("request", console.log);
+//server.on("upgrade", console.log);
+server.listen(port, "localhost", function () {
+    console.log("httpolyglot server listening on port " + port);
+});
+```
 
 Simple Determine the connection protocol
 
@@ -100,11 +203,62 @@ redirect all http connections to https:
 
 https://github.com/masx200/http-https-spdy-http2-polyglot/blob/master/test/redirect.js
 
+```js
+import { createServer } from "../lib/index.js";
+import { cert, key } from "./key-cert.js";
+// @ts-ignore
+
+const port = 9001;
+const server = createServer(
+    {
+        key,
+        cert,
+    },
+    function (req, res) {
+        if ("encrypted" in req.socket) {
+            res.writeHead(200, { "Content-Type": "text/html" });
+            res.end("Welcome, HTTPS user!");
+        } else {
+            const host = req.headers["host"];
+            const originurl = req.url || "";
+            const tourl = new URL(originurl, "https://" + host);
+            tourl.port = String(port);
+            res.writeHead(302, {
+                Location: tourl.href,
+                "Content-Type": "text/html",
+            });
+            res.write("302");
+            return res.end();
+        }
+    }
+);
+
+server.listen(port, "localhost", function () {
+    console.log("httpolyglot server listening on port " + port);
+});
+```
+
 create a "404 not found" server
 
 创建“ 404 未找到”服务器
 
 https://github.com/masx200/http-https-spdy-http2-polyglot/blob/master/test/notfound.js
+
+```js
+import { createServer } from "../lib/index.js";
+import { cert, key } from "./key-cert.js";
+const port = 8998;
+// @ts-ignore
+
+const server = createServer({
+    key,
+    cert,
+});
+
+server.listen(port, "localhost", function () {
+    console.log("httpolyglot server listening on port " + port);
+});
+```
 
 # API
 
