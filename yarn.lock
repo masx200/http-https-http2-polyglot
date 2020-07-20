@@ -20,7 +20,7 @@
     "@rushstack/node-core-library" "3.25.0"
     "@rushstack/ts-command-line" "4.4.6"
     colors "~1.2.1"
-    lodash "~4.17.15"
+    lodash "~4.17.19"
     resolve "~1.17.0"
     semver "~7.3.0"
     source-map "~0.6.1"
@@ -331,9 +331,9 @@ lodash.isequal@^4.0.0:
   resolved "https://registry.npmjs.org/lodash.isequal/-/lodash.isequal-4.5.0.tgz#415c4478f2bcc30120c22ce10ed3226f7d3e18e0"
   integrity sha1-QVxEePK8wwEgwizhDtMib30+GOA=
 
-lodash@~4.17.15:
-  version "4.17.15"
-  resolved "https://registry.npmjs.org/lodash/-/lodash-4.17.15.tgz#b447f6670a0455bbfeedd11392eff330ea097548"
+lodash@~4.17.19:
+  version "4.17.19"
+  resolved "https://registry.npmjs.org/lodash/-/lodash-4.17.19.tgz#b447f6670a0455bbfeedd11392eff330ea097548"
   integrity sha512-8xOcRHvCjnocdS5cpwXQXVzmmh5e5+saE2QGoeQmbKmRS6J3VQppPOIt0MnmE+4xlZoumy0GPG0D0MVIQbNA1A==
 
 lowercase-keys@^2.0.0:
