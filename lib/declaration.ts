@@ -1,6 +1,6 @@
 import http from "http";
 import net from "net";
-import spdy from "spdy";
+
 import tls from "tls";
 import stream from "stream";
 import https from "https";
@@ -24,7 +24,7 @@ export type UpgradeListener = (
     socket: Socket,
     head: Buffer
 ) => void;
-export type ServerOptions = spdy.ServerOptions & {
+export type ServerOptions =  {
     allowHalfOpen?: boolean | undefined;
     pauseOnConnect?: boolean | undefined;
 } & http.ServerOptions &
