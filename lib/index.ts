@@ -1,4 +1,4 @@
-import assert from "assert";
+
 import http from "http";
 import net from "net";
 import http2 from "http2";
@@ -80,9 +80,9 @@ tls.TLSSocket
     }
     server.addListener("connection", connectionListener);
 
-    function connectionListener(socket: net.Socket) {
+    async function connectionListener(socket: net.Socket) {
         Reflect.set(socket, "allowHalfOpen", false);
-        assert(Reflect.get(socket, "allowHalfOpen") === false);
+        
         /* 类型“Socket”上不存在属性“allowHalfOpen” */
         // socket.allowHalfOpen = false;
         //如果没有error监听器就添加error 监听器
