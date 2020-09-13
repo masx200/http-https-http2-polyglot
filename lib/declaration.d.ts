@@ -33,9 +33,9 @@ export declare type ServerOptions = http2.SecureServerOptions & {
 export declare const requestNotFound: (
     req: ServerRequest,
     res: ServerResponse
-) => void;
+) => Promise<void>;
 export declare const upgradeNotFound: (
     req: ServerRequest,
     socket: Socket,
     head: Buffer
-) => void;
+) => Promise<void>;

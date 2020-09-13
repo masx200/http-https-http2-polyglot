@@ -19,7 +19,7 @@ export declare type RequestListener = (
 export declare const requestNotFound: (
     req: ServerRequest,
     res: ServerResponse
-) => void;
+) => Promise<void>;
 
 export declare type ServerOptions = http2.SecureServerOptions & {
     allowHalfOpen?: boolean | undefined;
@@ -52,6 +52,6 @@ export declare const upgradeNotFound: (
     req: ServerRequest,
     socket: Socket,
     head: Buffer
-) => void;
+) => Promise<void>;
 
 export {};

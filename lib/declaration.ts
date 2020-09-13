@@ -27,7 +27,7 @@ export type ServerOptions = http2.SecureServerOptions & {
 } & http.ServerOptions &
     tls.TlsOptions &
     https.ServerOptions & { allowHTTP1: boolean };
-export const requestNotFound = function (
+export const requestNotFound = async function (
     req: ServerRequest,
     res: ServerResponse
 ) {
@@ -35,7 +35,7 @@ export const requestNotFound = function (
 
     res.end("404 Not Found");
 };
-export const upgradeNotFound = function (
+export const upgradeNotFound = async function (
     req: ServerRequest,
     socket: Socket,
     head: Buffer
