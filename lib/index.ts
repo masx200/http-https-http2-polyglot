@@ -17,7 +17,8 @@ function createServer(
     options: ServerOptions,
     requestListener: RequestListener = requestNotFound,
     upgradeListener: UpgradeListener = upgradeNotFound
-): net.Server {
+): http2.SecureServer
+ {
     if (!(options && typeof options === "object")) {
         throw new Error("options are required!");
     }
@@ -158,5 +159,5 @@ tls.TLSSocket
         });
     });
 
-    return servernet;
+    return serverhttp2;
 }
