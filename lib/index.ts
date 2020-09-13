@@ -1,7 +1,7 @@
 import assert from "assert";
 import http from "http";
 import net from "net";
-import spdy from "spdy";
+
 import tls from "tls";
 import {
     RequestListener,
@@ -44,7 +44,7 @@ function createServer(
     const serverhttp = http.createServer(options);
     Reflect.set(serverhttp, "allowHalfOpen", false);
     //@ts-ignore
-    const serverspdy = spdy.createServer(options);
+    const serverspdy = http2.createSecureServer(options);
 
     Reflect.set(serverspdy, "allowHalfOpen", false);
     serverhttp.addListener("upgrade", upgradeListener);
