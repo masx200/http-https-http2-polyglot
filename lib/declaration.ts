@@ -31,7 +31,7 @@ export const requestNotFound = function (
     res: ServerResponse
 ) {
     res.statusCode = 404;
-    res.setHeader("content-type", "text/html");
+   
 
     res.end("404 Not Found");
     
@@ -44,9 +44,9 @@ export const upgradeNotFound = function (
     
     const response = [
         `HTTP/1.1 404 Not Found`,
-        `content-type: text/html`,
+       
         
-        `Connection: keep-alive`,
+        
         `Content-Length: 0`,
         "",
         "",
