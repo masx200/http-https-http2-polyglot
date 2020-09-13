@@ -272,7 +272,7 @@ https://github.com/masx200/http-https-http2-polyglot/blob/master/dist/index.d.ts
 
 ```ts
 declare function createServer(
-    config: ServerOptions,
+    options: ServerOptions,
     requestListener?: RequestListener,
     upgradeListener?: UpgradeListener
 ): http2.Http2SecureServer;
