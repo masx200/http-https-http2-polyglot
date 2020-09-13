@@ -2,7 +2,7 @@
 
 说明
 
-Serve http and https  and http2 connections over the same port with node.js，
+Serve http and https and http2 connections over the same port with node.js，
 
 and add "typescript" support。
 
