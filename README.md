@@ -2,15 +2,15 @@
 
 说明
 
-Serve http and https and spdy and http2 connections over the same port with node.js，
+Serve http and https  and http2 connections over the same port with node.js，
 
-and add typescript support。
+and add "typescript" support。
 
 Thanks to the original author，
 
-使用 node.js 在同一端口上服务 http 和 https 以及 spdy 和 http2 连接，
+使用 node.js 在同一端口上服务 http 和 https 以及 http2 连接，
 
-并添加打字稿支持。
+并添加"TYPESCRIPT"支持。
 
 多亏了原作者，
 
@@ -29,7 +29,7 @@ https://github.com/httptoolkit/httpolyglot
 安装
 
 ```shell
-yarn add spdy  @masx200/http-https-http2-polyglot
+yarn add @masx200/http-https-http2-polyglot
 ```
 
 # Connection protocol judgment
@@ -60,7 +60,7 @@ const ishttp2 = "h2" === req.socket.alpnProtocol;
 
 `http2` server push
 
-https://github.com/masx200/http-https-spdy-http2-polyglot/blob/master/test/push.js
+https://github.com/masx200/http-https-http2-polyglot/blob/master/test/push.js
 
 ```js
 import { createServer } from "../lib/index.js";
@@ -112,7 +112,7 @@ Websocket server
 
 Websocket 服务器
 
-https://github.com/masx200/http-https-spdy-http2-polyglot/blob/master/test/websocket.js
+https://github.com/masx200/http-https-http2-polyglot/blob/master/test/websocket.js
 
 ```js
 import fs from "fs";
@@ -201,7 +201,7 @@ redirect all http connections to https:
 
 将所有 http 连接重定向到 https
 
-https://github.com/masx200/http-https-spdy-http2-polyglot/blob/master/test/redirect.js
+https://github.com/masx200/http-https-http2-polyglot/blob/master/test/redirect.js
 
 ```js
 import { createServer } from "../lib/index.js";
@@ -242,7 +242,7 @@ create a "404 not found" server
 
 创建“ 404 未找到”服务器
 
-https://github.com/masx200/http-https-spdy-http2-polyglot/blob/master/test/notfound.js
+https://github.com/masx200/http-https-http2-polyglot/blob/master/test/notfound.js
 
 ```js
 import { createServer } from "../lib/index.js";
@@ -264,7 +264,7 @@ server.listen(port, "localhost", function () {
 
 ## Exports
 
-https://github.com/masx200/http-https-spdy-http2-polyglot/blob/master/dist/index.d.ts
+https://github.com/masx200/http-https-http2-polyglot/blob/master/dist/index.d.ts
 
 **createServer** - Creates and returns a new Server instance.
 
