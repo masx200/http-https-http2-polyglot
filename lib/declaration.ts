@@ -5,18 +5,13 @@ import http2 from "http2"
 import tls from "tls";
 import stream from "stream";
 import https from "https";
-export interface ServerRequest extends http.IncomingMessage {
+export interface ServerRequest extends http.IncomingMessage extends http2.Http2ServerRequest{
     socket: Socket;
 }
-export interface PushOptions {
-    status?: number;
-    method?: string;
-    request?: http.OutgoingHttpHeaders;
-    response?: http.OutgoingHttpHeaders;
-}
-export interface ServerResponse extends http.ServerResponse {
+
+export interface ServerResponse extends http.ServerResponse extends http2.Http2ServerResponse{
     socket: Socket;
-    push?: (pathname: string, options?: PushOptions) => stream.Writable;
+    
 }
 export type Socket = tls.TLSSocket & net.Socket;
 export type RequestListener = (req: ServerRequest, res: ServerResponse) => void;
@@ -39,20 +34,18 @@ export const requestNotFound = function (
     res.setHeader("content-type", "text/html");
 
     res.end("404 Not Found");
-    // res.destroy();
+    
 };
 export const upgradeNotFound = function (
     req: ServerRequest,
     socket: Socket,
     head: Buffer
 ) {
-    // const res = new http.ServerResponse(req);
-    // //@ts-ignore
-    // requestNotFound(req, res);
+    
     const response = [
         `HTTP/1.1 404 Not Found`,
         `content-type: text/html`,
-        //  `Date: Fri, 08 May 2020 16:20:58 GMT`,
+        
         `Connection: keep-alive`,
         `Content-Length: 0`,
         "",
