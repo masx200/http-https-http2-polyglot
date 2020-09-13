@@ -63,7 +63,7 @@ tls.TLSSocket
 自动监听error事件,防止服务器意外退出
 */
     function handletls(socket: net.Socket) {
-        // server.emit("connection", socket);
+        
         server.listeners("connection").forEach((callback: Function) => {
             Promise.resolve().then(() => {
                 Reflect.apply(callback, server, [socket]);
@@ -71,10 +71,10 @@ tls.TLSSocket
         });
     }
     function handlehttp(socket: net.Socket) {
-        // serverhttp.emit("connection", socket);
+        
         serverhttp.listeners("connection").forEach((callback) => {
             Promise.resolve().then(() => {
-                Reflect.apply(callback, serverhttp, [socket]);
+                Reflect.apply(callback, server, [socket]);
             });
         });
     }
