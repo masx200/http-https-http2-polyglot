@@ -1,7 +1,7 @@
 import assert from "assert";
 import http from "http";
 import net from "net";
-import http2 from "http2"
+import http2 from "http2";
 import tls from "tls";
 import {
     RequestListener,
@@ -121,9 +121,7 @@ tls.TLSSocket
             } else {
                 const response = [
                     `HTTP/1.1 400 Bad Request`,
-                    
-                 
-                    
+
                     `Content-Length: 0`,
                     "",
                     "",
