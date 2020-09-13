@@ -121,9 +121,9 @@ tls.TLSSocket
             } else {
                 const response = [
                     `HTTP/1.1 400 Bad Request`,
-                    `content-type: text/html`,
-                    //   `Date: Fri, 08 May 2020 16:20:58 GMT`,
-                    `Connection: keep-alive`,
+                    
+                 
+                    
                     `Content-Length: 0`,
                     "",
                     "",
