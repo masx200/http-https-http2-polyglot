@@ -124,7 +124,8 @@ tls.TLSSocket
                 socket.destroy();
                 server.emit(
                     "clientError",
-                    new Error("protocol error, not http or tls"),
+                    new Error("protocol error, Neither http, nor
+ tls"),
                     socket
                 );
             }
