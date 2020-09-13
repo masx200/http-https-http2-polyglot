@@ -1,5 +1,6 @@
 import http from "http";
 import net from "net";
+import http2 from "http2"
 
 import tls from "tls";
 import stream from "stream";
