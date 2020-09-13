@@ -78,7 +78,7 @@ tls.TLSSocket
             });
         });
     }
-    // server.addListener("connection", connectionListener);
+    server.addListener("connection", connectionListener);
 
     function connectionListener(socket: net.Socket) {
         Reflect.set(socket, "allowHalfOpen", false);
