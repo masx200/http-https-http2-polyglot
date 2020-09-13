@@ -25,7 +25,7 @@ export type UpgradeListener = (
     socket: Socket,
     head: Buffer
 ) => void;
-export type ServerOptions =  {
+export type ServerOptions = http2. SecureServerOptions{
     allowHalfOpen?: boolean | undefined;
     pauseOnConnect?: boolean | undefined;
 } & http.ServerOptions &
