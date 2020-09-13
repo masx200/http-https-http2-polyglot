@@ -1,23 +1,15 @@
 /// <reference types="node" />
-import http from "http";
-import https from "https";
-import net from "net";
-import spdy from "spdy";
-import stream from "stream";
-import tls from "tls";
+import http from 'http';
+import http2 from 'http2';
+import https from 'https';
+import net from 'net';
+import tls from 'tls';
 
 export declare function createServer(
-    config: ServerOptions,
+    options: ServerOptions,
     requestListener?: RequestListener,
     upgradeListener?: UpgradeListener
-): net.Server;
-
-export declare interface PushOptions {
-    status?: number;
-    method?: string;
-    request?: http.OutgoingHttpHeaders;
-    response?: http.OutgoingHttpHeaders;
-}
+): http2.Http2SecureServer;
 
 export declare type RequestListener = (
     req: ServerRequest,
@@ -29,21 +21,24 @@ export declare const requestNotFound: (
     res: ServerResponse
 ) => void;
 
-export declare type ServerOptions = spdy.ServerOptions & {
+export declare type ServerOptions = http2.SecureServerOptions & {
     allowHalfOpen?: boolean | undefined;
     pauseOnConnect?: boolean | undefined;
 } & http.ServerOptions &
     tls.TlsOptions &
-    https.ServerOptions;
+    https.ServerOptions & {
+        allowHTTP1: boolean;
+    };
 
-export declare interface ServerRequest extends http.IncomingMessage {
-    socket: Socket;
-}
+export declare type ServerRequest = http.IncomingMessage &
+    http2.Http2ServerRequest & {
+        socket: Socket;
+    };
 
-export declare interface ServerResponse extends http.ServerResponse {
-    socket: Socket;
-    push?: (pathname: string, options?: PushOptions) => stream.Writable;
-}
+export declare type ServerResponse = http.ServerResponse &
+    http2.Http2ServerResponse & {
+        socket: Socket;
+    };
 
 export declare type Socket = tls.TLSSocket & net.Socket;
 
@@ -59,4 +54,4 @@ export declare const upgradeNotFound: (
     head: Buffer
 ) => void;
 
-export {};
+export { }
