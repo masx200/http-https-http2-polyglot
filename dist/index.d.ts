@@ -1,9 +1,9 @@
 /// <reference types="node" />
-import http from 'http';
-import http2 from 'http2';
-import https from 'https';
-import net from 'net';
-import tls from 'tls';
+import http from "http";
+import http2 from "http2";
+import https from "https";
+import net from "net";
+import tls from "tls";
 
 export declare function createServer(
     options: ServerOptions,
@@ -54,4 +54,4 @@ export declare const upgradeNotFound: (
     head: Buffer
 ) => void;
 
-export { }
+export {};
