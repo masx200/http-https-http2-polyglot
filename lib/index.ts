@@ -62,15 +62,16 @@ net.Socket
 tls.TLSSocket
 自动监听error事件,防止服务器意外退出
 */
-    function handletls(socket: net.Socket) {
+const tlsconlisteners=server.listeners("connection")
+   async function handletls(socket: net.Socket) {
         
-        server.listeners("connection").forEach((callback: Function) => {
+        tlsconlisteners.forEach((callback: Function) => {
             Promise.resolve().then(() => {
                 Reflect.apply(callback, server, [socket]);
             });
         });
     }
-    function handlehttp(socket: net.Socket) {
+   async function handlehttp(socket: net.Socket) {
         
         serverhttp.listeners("connection").forEach((callback) => {
             Promise.resolve().then(() => {
@@ -78,6 +79,7 @@ tls.TLSSocket
             });
         });
     }
+server.removeAllListeners("connection")
     server.addListener("connection", connectionListener);
 
     async function connectionListener(socket: net.Socket) {
@@ -89,8 +91,7 @@ tls.TLSSocket
         if (!socket.listeners("error").length) {
             socket.on("error", () => {});
         }
-        //   let ishttp = false;
-        //     let istls = false;
+        
 
         const data = socket.read(1);
         /* https://github.com/httptoolkit/httpolyglot/blob/master/lib/index.js */
