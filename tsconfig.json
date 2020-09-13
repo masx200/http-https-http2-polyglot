@@ -3,6 +3,7 @@
     "include": ["*/**.ts"],
     "exclude": ["dist/**.ts"],
     "compilerOptions": {
+        "sourceMap": false,
         "baseUrl": ".",
         "paths": {},
         "pretty": true,

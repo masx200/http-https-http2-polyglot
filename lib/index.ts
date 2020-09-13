@@ -1,4 +1,3 @@
-
 import http from "http";
 import net from "net";
 import http2 from "http2";
@@ -62,36 +61,33 @@ net.Socket
 tls.TLSSocket
 自动监听error事件,防止服务器意外退出
 */
-const tlsconlisteners=server.listeners("connection")
-   async function handletls(socket: net.Socket) {
-        
+    const tlsconlisteners = server.listeners("connection");
+    async function handletls(socket: net.Socket) {
         tlsconlisteners.forEach((callback: Function) => {
             Promise.resolve().then(() => {
                 Reflect.apply(callback, server, [socket]);
             });
         });
     }
-   async function handlehttp(socket: net.Socket) {
-        
+    async function handlehttp(socket: net.Socket) {
         serverhttp.listeners("connection").forEach((callback) => {
             Promise.resolve().then(() => {
                 Reflect.apply(callback, server, [socket]);
             });
         });
     }
-server.removeAllListeners("connection")
+    server.removeAllListeners("connection");
     server.addListener("connection", connectionListener);
 
     async function connectionListener(socket: net.Socket) {
         Reflect.set(socket, "allowHalfOpen", false);
-        
+
         /* 类型“Socket”上不存在属性“allowHalfOpen” */
         // socket.allowHalfOpen = false;
         //如果没有error监听器就添加error 监听器
         if (!socket.listeners("error").length) {
             socket.on("error", () => {});
         }
-        
 
         const data = socket.read(1);
         /* https://github.com/httptoolkit/httpolyglot/blob/master/lib/index.js */
@@ -125,8 +121,7 @@ server.removeAllListeners("connection")
                 socket.destroy();
                 server.emit(
                     "clientError",
-                    new Error("protocol error, Neither http, nor
- tls"),
+                    new Error("protocol error, Neither http, nor tls"),
                     socket
                 );
             }
