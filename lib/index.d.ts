@@ -1,5 +1,5 @@
 /// <reference types="node" />
-import net from "net";
+import http2 from "http2";
 import {
     RequestListener,
     ServerOptions,
@@ -11,4 +11,4 @@ declare function createServer(
     options: ServerOptions,
     requestListener?: RequestListener,
     upgradeListener?: UpgradeListener
-): net.Server;
+): http2.Http2SecureServer;
