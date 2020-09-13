@@ -1,23 +1,17 @@
 /// <reference types="node" />
 import http from "http";
 import net from "net";
-import spdy from "spdy";
+import http2 from "http2";
 import tls from "tls";
-import stream from "stream";
 import https from "https";
-export interface ServerRequest extends http.IncomingMessage {
-    socket: Socket;
-}
-export interface PushOptions {
-    status?: number;
-    method?: string;
-    request?: http.OutgoingHttpHeaders;
-    response?: http.OutgoingHttpHeaders;
-}
-export interface ServerResponse extends http.ServerResponse {
-    socket: Socket;
-    push?: (pathname: string, options?: PushOptions) => stream.Writable;
-}
+export declare type ServerRequest = http.IncomingMessage &
+    http2.Http2ServerRequest & {
+        socket: Socket;
+    };
+export declare type ServerResponse = http.ServerResponse &
+    http2.Http2ServerResponse & {
+        socket: Socket;
+    };
 export declare type Socket = tls.TLSSocket & net.Socket;
 export declare type RequestListener = (
     req: ServerRequest,
@@ -28,7 +22,7 @@ export declare type UpgradeListener = (
     socket: Socket,
     head: Buffer
 ) => void;
-export declare type ServerOptions = spdy.ServerOptions & {
+export declare type ServerOptions = http2.SecureServerOptions & {
     allowHalfOpen?: boolean | undefined;
     pauseOnConnect?: boolean | undefined;
 } & http.ServerOptions &
@@ -42,7 +36,6 @@ export declare const requestNotFound: (
 ) => void;
 export declare const upgradeNotFound: (
     req: ServerRequest,
-    socket: import("../dist").Socket,
+    socket: Socket,
     head: Buffer
 ) => void;
-//# sourceMappingURL=declaration.d.ts.map

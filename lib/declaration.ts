@@ -3,19 +3,17 @@ import net from "net";
 import http2 from "http2";
 
 import tls from "tls";
-import stream from "stream";
-import https from "https";
-export interface ServerRequest
-    extends http.IncomingMessage,
-        http2.Http2ServerRequest {
-    socket: Socket;
-}
 
-export interface ServerResponse
-    extends http.ServerResponse,
-        http2.Http2ServerResponse {
-    socket: Socket;
-}
+import https from "https";
+export type ServerRequest = http.IncomingMessage &
+    http2.Http2ServerRequest & {
+        socket: Socket;
+    };
+
+export type ServerResponse = http.ServerResponse &
+    http2.Http2ServerResponse & {
+        socket: Socket;
+    };
 export type Socket = tls.TLSSocket & net.Socket;
 export type RequestListener = (req: ServerRequest, res: ServerResponse) => void;
 export type UpgradeListener = (
