@@ -275,7 +275,7 @@ declare function createServer(
     config: ServerOptions,
     requestListener?: RequestListener,
     upgradeListener?: UpgradeListener
-): net.Server;
+): http2.SecureServer;
 ```
 
 The `requestListener` is a function which is automatically added to the 'request' event
