@@ -38,26 +38,19 @@ function createServer(
         upgradeListener = upgradeNotFound;
     }
 
-    const servernet = net.createServer({ allowHalfOpen: false });
-    Reflect.set(servernet, "allowHalfOpen", false);
-    assert(Reflect.get(servernet, "allowHalfOpen") === false);
     const serverhttp = http.createServer(options);
-    Reflect.set(serverhttp, "allowHalfOpen", false);
+
     //@ts-ignore
-    const serverhttp2 = http2.createSecureServer(options);
+    const server = http2.createSecureServer(options);
 
-    Reflect.set(serverhttp2, "allowHalfOpen", false);
-    serverhttp.addListener("upgrade", upgradeListener);
-    serverhttp2.addListener("upgrade", upgradeListener);
-    serverhttp.addListener("request", requestListener);
-    serverhttp2.addListener("request", requestListener);
+    Reflect.set(server, "allowHalfOpen", false);
 
-    servernet.addListener("error", () => {});
+    server.addListener("upgrade", upgradeListener);
 
-    serverhttp.addListener("error", () => {});
+    server.addListener("request", requestListener);
 
-    serverhttp2.addListener("error", () => {});
-    serverhttp2.prependListener("secureConnection", (socket: tls.TLSSocket) => {
+    server.addListener("error", () => {});
+    server.prependListener("secureConnection", (socket: tls.TLSSocket) => {
         if (!socket.listeners("error").length) {
             socket.on("error", () => {});
         }
@@ -70,10 +63,10 @@ tls.TLSSocket
 自动监听error事件,防止服务器意外退出
 */
     function handletls(socket: net.Socket) {
-        // serverhttp2.emit("connection", socket);
-        serverhttp2.listeners("connection").forEach((callback: Function) => {
+        // server.emit("connection", socket);
+        server.listeners("connection").forEach((callback: Function) => {
             Promise.resolve().then(() => {
-                Reflect.apply(callback, serverhttp2, [socket]);
+                Reflect.apply(callback, server, [socket]);
             });
         });
     }
@@ -85,8 +78,8 @@ tls.TLSSocket
             });
         });
     }
-    // serverhttp2.addListener("connection", connectionListener);
-    servernet.addListener("connection", connectionListener);
+    // server.addListener("connection", connectionListener);
+
     function connectionListener(socket: net.Socket) {
         Reflect.set(socket, "allowHalfOpen", false);
         assert(Reflect.get(socket, "allowHalfOpen") === false);
@@ -129,7 +122,7 @@ tls.TLSSocket
                 socket.write(response);
                 socket.end();
                 socket.destroy();
-                servernet.emit(
+                server.emit(
                     "clientError",
                     new Error("protocol error, not http or tls"),
                     socket
@@ -139,24 +132,5 @@ tls.TLSSocket
         /* 测试发现不能使用on data事件,会收不到响应,多次数据会漏掉 */
     }
 
-    const profun = [
-        "on",
-        "addListener",
-        "once",
-        "prependListener",
-        "prependOnceListener",
-    ];
-    profun.forEach((key) => {
-        const originnetfun = Reflect.get(servernet, key);
-        const originhttpfun = Reflect.get(serverhttp, key);
-        const originhttp2fun = Reflect.get(serverhttp2, key);
-        Reflect.set(servernet, key, (event: any, listener: any) => {
-            Reflect.apply(originnetfun, servernet, [event, listener]);
-            Reflect.apply(originhttpfun, serverhttp, [event, listener]);
-            Reflect.apply(originhttp2fun, serverhttp2, [event, listener]);
-            return servernet;
-        });
-    });
-
-    return serverhttp2;
+    return server;
 }
