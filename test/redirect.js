@@ -13,7 +13,7 @@ const server = createServer(
             res.writeHead(200, { "Content-Type": "text/html" });
             res.end("Welcome, HTTPS user!");
         } else {
-            const host = req.headers["host"];
+            const host = req.headers["host"] || req.authority;
             const originurl = req.url || "";
             const tourl = new URL(originurl, "https://" + host);
             tourl.port = String(port);
