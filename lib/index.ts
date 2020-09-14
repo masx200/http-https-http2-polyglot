@@ -65,7 +65,7 @@ tls.TLSSocket
     async function handletls(socket: net.Socket) {
         tlsconlisteners.forEach((callback: Function) => {
             Promise.resolve().then(() => {
-                Reflect.apply(callback, server, [socket]);
+                Reflect.apply(callback, serverproxy, [socket]);
             });
         });
     }
@@ -74,7 +74,7 @@ tls.TLSSocket
     async function handlehttp(socket: net.Socket) {
         httpconlisteners.forEach((callback) => {
             Promise.resolve().then(() => {
-                Reflect.apply(callback, server, [socket]);
+                Reflect.apply(callback, serverproxy, [socket]);
             });
         });
     }
@@ -131,7 +131,7 @@ tls.TLSSocket
         /* 测试发现不能使用on data事件,会收不到响应,多次数据会漏掉 */
     }
     const replacement = serverhttp;
-    return new Proxy(server, {
+    const serverproxy = new Proxy(server, {
         has(target, key) {
             return Reflect.has(target, key) || Reflect.has(replacement, key);
         },
@@ -167,4 +167,5 @@ return Reflect.set(replacement,key,value)
 */
         },
     }) as http2.Http2SecureServer & http.Server;
+    return serverproxy;
 }

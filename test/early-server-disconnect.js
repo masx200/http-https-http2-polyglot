@@ -23,11 +23,13 @@ server.listen(port, "localhost", function () {
         server.close(() => {
             console.log("server close");
         });
+        socket.end();
     });
     socket.on("close", (e) => {
         console.log("client close", e);
     });
 });
 setTimeout(() => {
-    process.exit(1);
-}, 3000);
+    server.close();
+    process.exit(0);
+}, 1000);
