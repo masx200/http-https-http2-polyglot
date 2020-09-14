@@ -69,8 +69,8 @@ tls.TLSSocket
             });
         });
     }
-const httpconlisteners = serverhttp.listeners("connection");
- 
+    const httpconlisteners = serverhttp.listeners("connection");
+
     async function handlehttp(socket: net.Socket) {
         httpconlisteners.forEach((callback) => {
             Promise.resolve().then(() => {
@@ -130,14 +130,13 @@ const httpconlisteners = serverhttp.listeners("connection");
         }
         /* 测试发现不能使用on data事件,会收不到响应,多次数据会漏掉 */
     }
-const replacement=serverhttp
-    return new Proxy(
-server,{
-
-
-get(target,key){
-return Reflect.has(target,key)?Reflect.get(target,key):Reflect.get(replacement,key)
-/*if(Reflect.has(target,key)){
+    const replacement = serverhttp;
+    return new Proxy(server, {
+        get(target, key) {
+            return Reflect.has(target, key)
+                ? Reflect.get(target, key)
+                : Reflect.get(replacement, key);
+            /*if(Reflect.has(target,key)){
 
 return Reflect.get(target,key)
 
@@ -147,10 +146,12 @@ return Reflect.get(replacement,key)
 }
 
 */
-}
-,set(target ,key,value){
-return Reflect.has(target,key)?Reflect.set(target,key,value):Reflect.set(replacement,key,value)
-/*
+        },
+        set(target, key, value) {
+            return Reflect.has(target, key)
+                ? Reflect.set(target, key, value)
+                : Reflect.set(replacement, key, value);
+            /*
 if(Reflect.has(target,key)){
 
 return Reflect.set(target,key,value)
@@ -161,8 +162,6 @@ return Reflect.set(replacement,key,value)
 }
 
 */
-}
-
-
-});
+        },
+    });
 }
