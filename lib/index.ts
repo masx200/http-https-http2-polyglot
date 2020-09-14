@@ -136,8 +136,8 @@ server,{
 
 
 get(target,key){
-
-if(Reflect.has(target,key)){
+return Reflect.has(target,key)?Reflect.get(target,key):Reflect.get(replacement,key)
+/*if(Reflect.has(target,key)){
 
 return Reflect.get(target,key)
 
@@ -146,10 +146,11 @@ return Reflect.get(target,key)
 return Reflect.get(replacement,key)
 }
 
-
+*/
 }
 ,set(target ,key,value){
-
+return Reflect.has(target,key)?Reflect.set(target,key,value):Reflect.set(replacement,key,value)
+/*
 if(Reflect.has(target,key)){
 
 return Reflect.set(target,key,value)
@@ -159,7 +160,7 @@ return Reflect.set(target,key,value)
 return Reflect.set(replacement,key,value)
 }
 
-
+*/
 }
 
 
