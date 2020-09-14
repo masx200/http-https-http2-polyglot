@@ -16,9 +16,7 @@ function createServer(
     options: ServerOptions,
     requestListener: RequestListener = requestNotFound,
     upgradeListener: UpgradeListener = upgradeNotFound
-): http2.Http2SecureServer &http.Server
-
-{
+): http2.Http2SecureServer & http.Server {
     if (!(options && typeof options === "object")) {
         throw new Error("options are required!");
     }
@@ -134,11 +132,9 @@ tls.TLSSocket
     }
     const replacement = serverhttp;
     return new Proxy(server, {
-has(target, key){
-
-return Reflect.has(target, key)||Reflect.has(replacement, key)
-
-},
+        has(target, key) {
+            return Reflect.has(target, key) || Reflect.has(replacement, key);
+        },
         get(target, key) {
             return Reflect.has(target, key)
                 ? Reflect.get(target, key)
@@ -170,5 +166,5 @@ return Reflect.set(replacement,key,value)
 
 */
         },
-    });
+    }) as http2.Http2SecureServer & http.Server;
 }

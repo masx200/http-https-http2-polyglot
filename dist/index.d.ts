@@ -9,7 +9,7 @@ export declare function createServer(
     options: ServerOptions,
     requestListener?: RequestListener,
     upgradeListener?: UpgradeListener
-): http2.Http2SecureServer;
+): http2.Http2SecureServer & http.Server;
 
 export declare type RequestListener = (
     req: ServerRequest,
