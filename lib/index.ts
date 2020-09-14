@@ -129,5 +129,13 @@ tls.TLSSocket
         /* 测试发现不能使用on data事件,会收不到响应,多次数据会漏掉 */
     }
 
-    return server;
+    return new Proxy(
+server,{
+
+
+get(){}
+,set(){}
+
+
+});
 }
