@@ -15,7 +15,10 @@ const server = createServer(
             res.end('alert("not from push stream")');
             return;
         } else {
-            res.writeHead(200, { "Content-Type": "text/html" }); //        accept: "*/*",
+            res.writeHead(200, { "Content-Type": "text/html" });
+
+
+ //        accept: "*/*",
 
             /*
             if (res.push) {
