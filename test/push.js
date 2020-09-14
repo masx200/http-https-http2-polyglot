@@ -8,22 +8,22 @@ const server = createServer(
         key,
         cert,
     },
-    (req, res) => {
+    async (req, res) => {
         if (req.url == "/main.js") {
             res.statusCode = 200;
             res.setHeader("content-type", "application/javascript");
             res.end('alert("not from push stream")');
             return;
         } else {
-            res.writeHead(200, { "Content-Type": "text/html" });
+            res.writeHead(200, { "Content-Type": "text/html" }); //        accept: "*/*",
 
+            /*
             if (res.push) {
                 var stream = res.push("/main.js", {
                     status: 200, // optional
                     method: "GET", // optional
                     request: {
-                        accept: "*/*",
-                    },
+           */ /*      },
                     response: {
                         "content-type": "application/javascript",
                     },
@@ -34,6 +34,7 @@ const server = createServer(
                 stream.end('alert("hello from push stream!");');
             }
 
+*/
             res.end('push<script src="/main.js"></script>');
         }
     }

@@ -41,7 +41,7 @@ const server = createServer(
             res.end();
         }
     },
-    function (req, socket, head) {
+    async function (req, socket, head) {
         wsServer.handleUpgrade(req, socket, head, function done(ws) {
             wsServer.emit("connection", ws, req);
         });
