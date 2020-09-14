@@ -9,8 +9,7 @@ const server = createServer(
         cert,
     },
     async function (req, res) {
-
-        if ("encrypted" in req.socket) {
+        if (true === req.socket["encrypted"]) {
             res.writeHead(200, { "Content-Type": "text/html" });
             res.end("Welcome, HTTPS user!");
         } else {

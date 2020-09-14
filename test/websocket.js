@@ -10,7 +10,7 @@ wsServer.on("connection", (websocket, req) => {
     websocket.on("error", () => {});
     websocket.send(JSON.stringify(req.headers));
     websocket.send(
-        ("encrypted" in req.socket ? "HTTPS" : "HTTP") + " Connection!"
+        (true === req.socket["encrypted"] ? "HTTPS" : "HTTP") + " Connection!"
     );
 });
 // @ts-ignore

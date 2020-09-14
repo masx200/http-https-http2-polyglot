@@ -11,7 +11,7 @@ const server = createServer(
         debugger;
         res.writeHead(200, { "Content-Type": "text/html" });
         const body =
-            ("encrypted" in req.socket ? "HTTPS" : "HTTP") +
+            (true === req.socket["encrypted"] ? "HTTPS" : "HTTP") +
             " Connection!\n" +
             "alpnProtocol:" +
             req.socket.alpnProtocol +

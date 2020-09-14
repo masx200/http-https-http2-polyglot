@@ -15,18 +15,9 @@ const server = createServer(
             res.end('alert("not from push stream")');
             return;
         } else {
-            res.writeHead(200, { "Content-Type": "text/html" });
-
-
- //        accept: "*/*",
-
-            /*
-            if (res.push) {
-                var stream = res.push("/main.js", {
-                    status: 200, // optional
-                    method: "GET", // optional
-                    request: {
-           */ /*      },
+            res.writeHead(200, {
+                "Content-Type": "text/html",
+            }); /*      },
                     response: {
                         "content-type": "application/javascript",
                     },
@@ -38,7 +29,18 @@ const server = createServer(
             }
 
 */
-            res.end('push<script src="/main.js"></script>');
+
+            //        accept: "*/*",
+
+            /*
+            if (res.push) {
+                var stream = res.push("/main.js", {
+                    status: 200, // optional
+                    method: "GET", // optional
+                    request: {
+           */ res.end(
+                'push<script src="/main.js"></script>'
+            );
         }
     }
 );
