@@ -69,8 +69,10 @@ tls.TLSSocket
             });
         });
     }
+const httpconlisteners = serverhttp.listeners("connection");
+ 
     async function handlehttp(socket: net.Socket) {
-        serverhttp.listeners("connection").forEach((callback) => {
+        httpconlisteners.forEach((callback) => {
             Promise.resolve().then(() => {
                 Reflect.apply(callback, server, [socket]);
             });
@@ -133,8 +135,8 @@ tls.TLSSocket
 server,{
 
 
-get(){}
-,set(){}
+get(target,key){}
+,set(target ,key,value){}
 
 
 });
