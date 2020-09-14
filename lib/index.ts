@@ -130,13 +130,37 @@ const httpconlisteners = serverhttp.listeners("connection");
         }
         /* 测试发现不能使用on data事件,会收不到响应,多次数据会漏掉 */
     }
-
+const replacement=serverhttp
     return new Proxy(
 server,{
 
 
-get(target,key){}
-,set(target ,key,value){}
+get(target,key){
+
+if(Reflect.has(target,key)){
+
+return Reflect.get(target,key)
+
+}else{
+
+return Reflect.get(replacement,key)
+}
+
+
+}
+,set(target ,key,value){
+
+if(Reflect.has(target,key)){
+
+return Reflect.set(target,key,value)
+
+}else{
+
+return Reflect.set(replacement,key,value)
+}
+
+
+}
 
 
 });
