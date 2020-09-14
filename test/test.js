@@ -14,11 +14,12 @@ var __dirname = dirname(__filename);
 const files = [
     "half-open-tls.js",
     "tls-early-disconnect.js",
-    "early-server-disconnect.js",
+
     "early-client-disconnect.js",
     "fetch1.js",
     // "fetch2.js",
     "h2request.js",
+    "early-server-disconnect.js",
 ].map((p) => path.join(__dirname, p));
 files.reduce(async (prev, file) => {
     await prev;

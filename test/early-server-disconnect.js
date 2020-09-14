@@ -28,3 +28,6 @@ server.listen(port, "localhost", function () {
         console.log("client close", e);
     });
 });
+setTimeout(() => {
+    process.exit(1);
+}, 3000);
