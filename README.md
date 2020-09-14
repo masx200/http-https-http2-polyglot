@@ -43,7 +43,7 @@ yarn add @masx200/http-https-http2-polyglot
 Determine if the connection is over tls.
 
 ```js
-const istls = "encrypted" in req.socket;
+const istls = true===  req.socket["encrypted"];
 ```
 
 Determine if the connection is `http/2`.
@@ -129,7 +129,7 @@ wsServer.on("connection", (websocket, req) => {
     websocket.on("error", () => {});
     websocket.send(JSON.stringify(req.headers));
     websocket.send(
-        ("encrypted" in req.socket ? "HTTPS" : "HTTP") + " Connection!"
+        (true===  req.socket["encrypted"] ? "HTTPS" : "HTTP") + " Connection!"
     );
 });
 // @ts-ignore
@@ -190,7 +190,7 @@ const server = httpolyglot.createServer(
     function (req, res) {
         res.writeHead(200, { "Content-Type": "text/html" });
         res.end(
-            ("encrypted" in req.socket ? "HTTPS" : "HTTP") + " Connection!"
+            (true===  req.socket["encrypted"] ? "HTTPS" : "HTTP") + " Connection!"
         );
     }
 );
@@ -217,7 +217,7 @@ const server = createServer(
         cert,
     },
     function (req, res) {
-        if ("encrypted" in req.socket) {
+        if (true===  req.socket["encrypted"]) {
             res.writeHead(200, { "Content-Type": "text/html" });
             res.end("Welcome, HTTPS user!");
         } else {
