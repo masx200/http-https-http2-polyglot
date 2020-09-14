@@ -364,5 +364,9 @@ yarn test
 ```
 
 ```powershell
+yarn curl
+```
+
+```powershell
 yarn open
 ```
