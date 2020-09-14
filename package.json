@@ -8,7 +8,7 @@
     "version": "2.0.0",
     "main": "./lib/index.js",
     "scripts": {
-        "generate": "powershell ./generate-ssl-cert.cmd",
+        "generate": "powershell ./generate-ssl-cert.cmd || sh ./generate-ssl-cert.cmd",
         "test": " node --experimental-modules ./test/test.js ",
         "open": "node --experimental-modules ./test/open.js",
         "build": "tsc ",
