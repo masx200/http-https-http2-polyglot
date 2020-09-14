@@ -10,6 +10,8 @@ Thanks to the original author，
 
 使用 node.js 在同一端口上服务 http 和 https 以及 http2 连接，
 
+优化和重构，
+
 并添加"TYPESCRIPT"支持。
 
 多亏了原作者，
