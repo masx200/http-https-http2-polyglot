@@ -17,7 +17,32 @@ const server = createServer(
         } else {
             res.writeHead(200, {
                 "Content-Type": "text/html",
-            }); /*      },
+            }); 
+
+
+if("createPushResponse" in res){
+res.createPushResponse({
+
+ ":method":"GET",
+":path":"/main.js"
+
+},(err,stream)=>{
+
+if(err){
+console.error(err)
+}
+else{
+stream.respond({
+  ':status': '200',
+  'content-type': 'application/javascript',})
+
+stream.end('alert("hello from push stream!");');
+}
+
+})
+}
+
+/*      },
                     response: {
                         "content-type": "application/javascript",
                     },
