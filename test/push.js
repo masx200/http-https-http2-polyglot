@@ -20,7 +20,7 @@ const server = createServer(
             }); 
 
 
-if("createPushResponse" in res){
+if("function"===typeof res["createPushResponse" ] ){
 res.createPushResponse({
 
  ":method":"GET",
