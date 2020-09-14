@@ -134,6 +134,11 @@ tls.TLSSocket
     }
     const replacement = serverhttp;
     return new Proxy(server, {
+has(target, key){
+
+return Reflect.has(target, key)||Reflect.has(replacement, key)
+
+},
         get(target, key) {
             return Reflect.has(target, key)
                 ? Reflect.get(target, key)
