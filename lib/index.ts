@@ -16,7 +16,9 @@ function createServer(
     options: ServerOptions,
     requestListener: RequestListener = requestNotFound,
     upgradeListener: UpgradeListener = upgradeNotFound
-): http2.Http2SecureServer {
+): http2.Http2SecureServer &http.Server
+
+{
     if (!(options && typeof options === "object")) {
         throw new Error("options are required!");
     }
