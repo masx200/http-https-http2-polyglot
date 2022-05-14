@@ -1,5 +1,5 @@
 import https from "https";
-import fetch1 from "node-fetch";
+import fetch1 from "cross-fetch";
 import { cert } from "./key-cert.js";
 import { urls } from "./urls.js";
 import { logjson } from "./logjson.js";

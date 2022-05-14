@@ -14,7 +14,7 @@
         "build": "tsc ",
         "extract": "api-extractor run --local",
         "serve": "node --experimental-modules ./test/serve.js",
-        "prettier": "prettier --write  *.md *.json ./**/*.js */**.ts",
+        "format": "prettier --write  *.md *.json ./**/*.js */**.ts",
         "curl": "sh ./curl.sh"
     },
     "engines": {
@@ -28,13 +28,13 @@
         "http2"
     ],
     "dependencies": {
-        "@types/node": "^17.0.33"
+        "@types/node": "^17.0.33",
+        "cross-fetch": "^3.1.5"
     },
     "devDependencies": {
         "@microsoft/api-extractor": "^7.9.15",
         "@types/ws": "^8.5.3",
         "got": "^12.0.4",
-        "node-fetch": "^2.6.1",
         "open": "^7.2.1",
         "prettier": "^2.1.1",
         "tslib": "^2.0.1",
