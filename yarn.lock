@@ -2,24 +2,24 @@
 # yarn lockfile v1
 
 
-"@microsoft/api-extractor-model@7.21.0":
-  version "7.21.0"
-  resolved "https://registry.yarnpkg.com/@microsoft/api-extractor-model/-/api-extractor-model-7.21.0.tgz#2138682e738a14038d40165ec77362e69853f200"
-  integrity sha512-NN4mXzoQWTuzznIcnLWeV6tGyn6Os9frDK6M/mmTXZ73vUYOvSWoKQ5SYzyzP7HF3YtvTmr1Rs+DsBb0HRx7WQ==
+"@microsoft/api-extractor-model@7.22.2":
+  version "7.22.2"
+  resolved "https://registry.yarnpkg.com/@microsoft/api-extractor-model/-/api-extractor-model-7.22.2.tgz#9d49c22ae713d8662c995d844e29c59200ebe72f"
+  integrity sha512-fqb7std1sRfg7tvXkJwB7zrgIyzty7iIJXxpqA2/bEdct36jhkgIhKpgYr2yoi+Jhqbinjmhyf9tPKJ2E3TdwA==
   dependencies:
     "@microsoft/tsdoc" "0.14.1"
     "@microsoft/tsdoc-config" "~0.16.1"
-    "@rushstack/node-core-library" "3.49.0"
+    "@rushstack/node-core-library" "3.50.0"
 
 "@microsoft/api-extractor@^7.9.15":
-  version "7.28.3"
-  resolved "https://registry.yarnpkg.com/@microsoft/api-extractor/-/api-extractor-7.28.3.tgz#516d8a81b1c62949116e258d54c03ee8c5b7740a"
-  integrity sha512-lkDHPyln8MNEy1QHjmGwedRquclGKU0qL0gHplfnHuSTXSoNQ86UYaPmhG77/GiNehXzGNKMYSIfTsuoQb69jA==
+  version "7.28.7"
+  resolved "https://registry.yarnpkg.com/@microsoft/api-extractor/-/api-extractor-7.28.7.tgz#3c2745499b38d1ae3b8e0488c3f5aaeb6edc3e60"
+  integrity sha512-hDVYSbqGsY4gioHMi/NkIarAJ2qoE5cKEZ6V5HqLcUl0+hNV0Auk/5VbBmU2UO2le6MFgO69EJsrfszwzC6QBA==
   dependencies:
-    "@microsoft/api-extractor-model" "7.21.0"
+    "@microsoft/api-extractor-model" "7.22.2"
     "@microsoft/tsdoc" "0.14.1"
     "@microsoft/tsdoc-config" "~0.16.1"
-    "@rushstack/node-core-library" "3.49.0"
+    "@rushstack/node-core-library" "3.50.0"
     "@rushstack/rig-package" "0.3.13"
     "@rushstack/ts-command-line" "4.12.1"
     colors "~1.2.1"
@@ -44,10 +44,10 @@
   resolved "https://registry.yarnpkg.com/@microsoft/tsdoc/-/tsdoc-0.14.1.tgz#155ef21065427901994e765da8a0ba0eaae8b8bd"
   integrity sha512-6Wci+Tp3CgPt/B9B0a3J4s3yMgLNSku6w5TV6mN+61C71UqsRBv2FUibBf3tPGlNxebgPHMEUzKpb1ggE8KCKw==
 
-"@rushstack/node-core-library@3.49.0":
-  version "3.49.0"
-  resolved "https://registry.yarnpkg.com/@rushstack/node-core-library/-/node-core-library-3.49.0.tgz#0324c1a5ba5e469967b70e9718d1a90750648503"
-  integrity sha512-yBJRzGgUNFwulVrwwBARhbGaHsxVMjsZ9JwU1uSBbqPYCdac+t2HYdzi4f4q/Zpgb0eNbwYj2yxgHYpJORNEaw==
+"@rushstack/node-core-library@3.50.0":
+  version "3.50.0"
+  resolved "https://registry.yarnpkg.com/@rushstack/node-core-library/-/node-core-library-3.50.0.tgz#8b628247f16e5719c39ed1890c11959f8d303559"
+  integrity sha512-FFEZhgu6iN1MVjpQWmLcz46pSa4r2Oe2JYPo7mtnl3uYfwDaSXUSZuRN3JQgKkXu10TBcffJ7AGKcIt/k+qE/Q==
   dependencies:
     "@types/node" "12.20.24"
     colors "~1.2.1"
