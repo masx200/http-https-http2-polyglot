@@ -1,6 +1,6 @@
 import assert from "assert";
 import net from "net";
-import { createServer } from "../lib/index.js";
+import { createServer } from "../dist/index.js";
 import { cert, key } from "./key-cert.js";
 const port = 0;
 // @ts-ignore

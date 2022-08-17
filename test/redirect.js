@@ -1,4 +1,4 @@
-import { createServer } from "../lib/index.js";
+import { createServer } from "../dist/index.js";
 import { cert, key } from "./key-cert.js";
 // @ts-ignore
 

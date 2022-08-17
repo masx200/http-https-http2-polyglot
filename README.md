@@ -65,7 +65,7 @@ const ishttp2 = "h2" === req.socket.alpnProtocol;
 https://github.com/masx200/http-https-http2-polyglot/blob/master/test/push.js
 
 ```js
-import { createServer } from "../lib/index.js";
+import { createServer } from "../dist/index.js";
 import { cert, key } from "./key-cert.js";
 const port = 9002;
 const server = createServer({ key, cert }, async (req, res) => {
@@ -111,7 +111,7 @@ import fs from "fs";
 import path, { dirname } from "path";
 import { fileURLToPath } from "url";
 import ws from "ws";
-import { createServer } from "../lib/index.js";
+import { createServer } from "../dist/index.js";
 import { cert, key } from "./key-cert.js";
 const port = 8999;
 const wsServer = new ws.Server({ noServer: true });
@@ -197,7 +197,7 @@ redirect all http connections to https:
 https://github.com/masx200/http-https-http2-polyglot/blob/master/test/redirect.js
 
 ```js
-import { createServer } from "../lib/index.js";
+import { createServer } from "../dist/index.js";
 import { cert, key } from "./key-cert.js";
 // @ts-ignore
 
@@ -238,7 +238,7 @@ create a "404 not found" server
 https://github.com/masx200/http-https-http2-polyglot/blob/master/test/notfound.js
 
 ```js
-import { createServer } from "../lib/index.js";
+import { createServer } from "../dist/index.js";
 import { cert, key } from "./key-cert.js";
 const port = 8998;
 // @ts-ignore
@@ -271,17 +271,23 @@ declare function createServer(
 ): http2.Http2SecureServer & http.Server;
 ```
 
-The `requestListener` is a function which is automatically added to the 'request' event
+The `requestListener` is a function which is automatically added to the
+'request' event
 
-The `upgradeListener` is a function which is automatically added to the 'upgrade' event
+The `upgradeListener` is a function which is automatically added to the
+'upgrade' event
 
-If no "requestListener" or "upgradeListener" is provided, the default "404 not found" listener will be used instead.
+If no "requestListener" or "upgradeListener" is provided, the default "404 not
+found" listener will be used instead.
 
-Event "clientError", If a client connection emits an 'error' event, it will be forwarded here.
+Event "clientError", If a client connection emits an 'error' event, it will be
+forwarded here.
 
-Event "tlsClientError", The 'tlsClientError' event is emitted when an error occurs before a secure connection is established.
+Event "tlsClientError", The 'tlsClientError' event is emitted when an error
+occurs before a secure connection is established.
 
-Event: 'listening',Emitted when the server has been bound after calling `server.listen()`.
+Event: 'listening',Emitted when the server has been bound after calling
+`server.listen()`.
 
 Event: 'close', Emitted when the server closes
 
@@ -291,7 +297,8 @@ Only "requestListener" will be called when the "request" event occurs.
 
 Only "upgradeListener" will be called when the "upgrade" event occurs.
 
-Do not add "request" or "upgrade" event listener because it is not recommended to add multiple event listeners for "request"or "upgrade".
+Do not add "request" or "upgrade" event listener because it is not recommended
+to add multiple event listeners for "request"or "upgrade".
 
 `requestListener`是一个自动添加到'request'事件的函数
 
@@ -321,7 +328,8 @@ Do not add "request" or "upgrade" event listener because it is not recommended t
 
 https://github.com/lvgithub/blog/blob/master/http_and_https_over_same_port/README.MD
 
-TLS and HTTP connections are easy to distinguish based on the first byte sent by clients trying to connect. See this comment for more information.
+TLS and HTTP connections are easy to distinguish based on the first byte sent by
+clients trying to connect. See this comment for more information.
 
 TLS 和 HTTP 连接很容易根据尝试连接的客户端发送的第一个字节进行区分。有关更多信息，请参见此评论。
 

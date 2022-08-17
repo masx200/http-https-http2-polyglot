@@ -2,7 +2,7 @@ import fs from "fs";
 import path, { dirname } from "path";
 import { fileURLToPath } from "url";
 import ws from "ws";
-import { createServer } from "../lib/index.js";
+import { createServer } from "../dist/index.js";
 import { cert, key } from "./key-cert.js";
 const port = 8999;
 const wsServer = new ws.Server({ noServer: true });

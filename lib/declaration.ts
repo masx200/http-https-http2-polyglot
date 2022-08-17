@@ -26,7 +26,7 @@ export type ServerOptions = http2.SecureServerOptions & {
     pauseOnConnect?: boolean | undefined;
 } & http.ServerOptions &
     tls.TlsOptions &
-    https.ServerOptions & { allowHTTP1: boolean };
+    https.ServerOptions & { allowHTTP1?: boolean };
 export const requestNotFound = async function (
     req: ServerRequest,
     res: ServerResponse

@@ -25,7 +25,7 @@ type ServerOptions = http2.SecureServerOptions & {
 } & http.ServerOptions &
     tls.TlsOptions &
     https.ServerOptions & {
-        allowHTTP1: boolean;
+        allowHTTP1?: boolean;
     };
 declare const requestNotFound: (
     req: ServerRequest,
