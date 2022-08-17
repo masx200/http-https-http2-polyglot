@@ -42,6 +42,7 @@ test("simple-http2", async () => {
             const text = response.body;
             console.log(text);
             assert.equal(text, "HTTPS Connection!\nalpnProtocol:h2 \n");
+            server.close();
             resolve();
         });
     });

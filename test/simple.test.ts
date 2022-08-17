@@ -36,6 +36,7 @@ test("simple-http", async () => {
             const text = await response.text();
             console.log(text);
             assert.equal(text, "HTTP Connection!\nalpnProtocol:undefined \n");
+            server.close();
             resolve();
         });
     });

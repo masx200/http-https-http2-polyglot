@@ -20,6 +20,7 @@ test("notfound", async () => {
             const response = await fetch("http://localhost:8998/notfound");
             console.log(response.status, response.headers);
             assert.equal(response.status, 404);
+            server.close();
             resolve();
         });
     });
