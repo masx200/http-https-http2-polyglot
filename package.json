@@ -9,9 +9,9 @@
     "main": "./lib/index.js",
     "scripts": {
         "generate": "powershell ./generate-ssl-cert.cmd || sh ./generate-ssl-cert.cmd",
-        "test": " node --experimental-modules ./test/test.js ",
+        "test": " vitest run",
         "open": "node --experimental-modules ./test/open.js",
-        "build": "tsc ",
+        "build": "vite build ",
         "extract": "api-extractor run --local",
         "serve": "node --experimental-modules ./test/serve.js",
         "format": "prettier --write  *.md *.json ./**/*.js */**.ts",
@@ -27,19 +27,21 @@
         "polyglot",
         "http2"
     ],
-    "dependencies": {
-        "@types/node": "^18.0.0",
-        "cross-fetch": "^3.1.5"
-    },
+    "dependencies": {},
     "devDependencies": {
-        "@microsoft/api-extractor": "^7.9.15",
+        "undici": "^5.8.2",
+        "vitest": "^0.22.0",
+        "@types/node": "^18.0.0",
+        "cross-fetch": "^3.1.5",
         "@types/ws": "^8.5.3",
         "got": "^12.0.4",
         "open": "^8.4.0",
-        "prettier": "^2.1.1",
         "tslib": "^2.0.1",
-        "typescript": "^4.0.2",
-        "ws": "^8.6.0"
+        "ws": "^8.6.0",
+        "prettier": "^2.7.1",
+        "rollup-plugin-ts": "^3.0.2",
+        "typescript": "^4.7.4",
+        "vite": "^3.0.8"
     },
     "license": "ISC",
     "repository": {
