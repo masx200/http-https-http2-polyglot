@@ -1,5 +1,5 @@
-import "./notfound.js";
-import "./simple.js";
+import "./notfound.test.js";
+import "./simple.test.js";
 import "./push.js";
 import "./redirect.js";
 import "./websocket.js";
