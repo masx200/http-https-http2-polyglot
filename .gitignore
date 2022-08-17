@@ -1,3 +1,4 @@
 node_modules
 *.bak
 yarn.lock
+.vscode/settings.json

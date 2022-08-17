@@ -1,8 +1,9 @@
 {
     "$schema": "http://json.schemastore.org/tsconfig",
-    "include": ["*/**.ts"],
+    "include": ["*/**.ts", "*.ts"],
     "exclude": ["dist/**.ts"],
     "compilerOptions": {
+        "noEmit": true,
         "sourceMap": false,
         "baseUrl": ".",
         "paths": {},
