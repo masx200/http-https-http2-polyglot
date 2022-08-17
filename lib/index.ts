@@ -15,7 +15,8 @@ export { createServer };
 function createServer(
     options: ServerOptions,
     requestListener: RequestListener = requestNotFound,
-    upgradeListener: UpgradeListener = upgradeNotFound
+    upgradeListener: UpgradeListener = upgradeNotFound,
+    connectListener: UpgradeListener = upgradeNotFound
 ): http2.Http2SecureServer & http.Server {
     if (!(options && typeof options === "object")) {
         throw new Error("options are required!");
@@ -36,7 +37,9 @@ function createServer(
     if (typeof upgradeListener !== "function") {
         upgradeListener = upgradeNotFound;
     }
-
+    if (typeof connectListener !== "function") {
+        connectListener = upgradeNotFound;
+    }
     const serverhttp = http.createServer(options);
 
     //@ts-ignore
@@ -45,6 +48,7 @@ function createServer(
     Reflect.set(server, "allowHalfOpen", false);
 
     server.addListener("upgrade", upgradeListener);
+    server.addListener("connect", connectListener);
 
     server.addListener("request", requestListener);
 
@@ -139,32 +143,11 @@ tls.TLSSocket
             return Reflect.has(target, key)
                 ? Reflect.get(target, key)
                 : Reflect.get(replacement, key);
-            /*if(Reflect.has(target,key)){
-
-return Reflect.get(target,key)
-
-}else{
-
-return Reflect.get(replacement,key)
-}
-
-*/
         },
         set(target, key, value) {
             return Reflect.has(target, key)
                 ? Reflect.set(target, key, value)
                 : Reflect.set(replacement, key, value);
-            /*
-if(Reflect.has(target,key)){
-
-return Reflect.set(target,key,value)
-
-}else{
-
-return Reflect.set(replacement,key,value)
-}
-
-*/
         },
     }) as http2.Http2SecureServer & http.Server;
     return serverproxy;
