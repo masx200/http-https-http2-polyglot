@@ -31,7 +31,7 @@
     "devDependencies": {
         "websocket-stream": "^5.5.2",
         "undici": "^5.8.2",
-        "vitest": "^0.24.0",
+        "vitest": "^0.25.3",
         "@types/node": "^18.0.0",
         "cross-fetch": "^3.1.5",
         "got": "^12.3.1",
